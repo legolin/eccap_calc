@@ -15,7 +15,7 @@ EccapCalc.mainPage = SC.Page.design({
     
     zipcodeView: SC.TextFieldView.design({
       layout: { centerX: 0, centerY: 0, width: 200, height: 18 },
-      tagName: "zipcode", 
+      //tagName: "input", 
       valueBinding: "EccapCalc.calcDataController.zipcode",
     }),
   }),

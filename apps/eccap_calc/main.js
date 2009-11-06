@@ -24,7 +24,7 @@ EccapCalc.main = function main() {
 
   // TODO: Set the content property on your primary controller
   // ex: EccapCalc.contactsController.set('content',EccapCalc.contacts);
-	var data = SC.Store.find({guid: 1}, EccapCalc.CalcData);
+	var data = EccapCalc.store.find(EccapCalc.CalcData, 1);
   EccapCalc.calcDataController.set('content', data);
 
 } ;
