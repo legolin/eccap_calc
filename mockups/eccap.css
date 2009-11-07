@@ -1,0 +1,25 @@
+div.line-item, div.section {
+    position: relative;
+}
+
+div.line-item-amount {
+    position: absolute;
+    top:  0;
+    left: 3in;
+}
+
+div.line-item-remove {
+    position: absolute;
+    top:  0;
+    left: 4in;
+    font-size: smaller;
+}
+
+div.add-another {
+    font-size: smaller;
+}
+
+div.total {
+    font-weight: bold;
+    margin-top: 1em;
+}
