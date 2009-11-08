@@ -1,17 +1,24 @@
 div.line-item, div.section {
     position: relative;
+    margin-top: .5em;
 }
 
 div.line-item-amount {
     position: absolute;
     top:  0;
-    left: 3in;
+    left: 3.5in;
+    width: .75in;
+    text-align: right;
+}
+
+div.line-item-desc {
+    width: 3.5in;
 }
 
 div.line-item-remove {
     position: absolute;
     top:  0;
-    left: 4in;
+    left: 4.5in;
     font-size: smaller;
 }
 
@@ -22,4 +29,61 @@ div.add-another {
 div.total {
     font-weight: bold;
     margin-top: 1em;
+}
+
+body {
+    position: relative:
+}
+
+#main-content {
+    position: absolute;
+    top: 0;
+    left: 2in;
+}
+
+#nav-sidebar {
+    width: 1.8in;
+    border-right: solid black;
+}
+
+#nav-sidebar * {
+    margin-top: .5em;
+}
+
+input {
+    width: .5in;
+}
+
+#inflation-rate {
+    margin-top: .2in;
+}
+
+h1 a {
+    font-size: small;
+    font-weight: normal;
+}
+
+div.report div.line-item-amount {
+    left: 3.5in;
+    width: 1.5in;
+}
+
+div.header {
+    font-weight: bold;
+    overflow: visible;
+    font-size: smaller;
+    padding-bottom: 1.5em;
+}
+
+p.hint {
+    font-size: smaller;
+}
+
+div.editable:hover, h1.editable:hover  {
+    background-color: #CCC;
+}
+
+a.add-new {
+    font-size: smaller;
+    font-weight: bold;
 }
