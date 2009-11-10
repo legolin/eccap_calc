@@ -8,9 +8,9 @@
 
   (Document Your Controller Here)
 
-  @extends SC.Object
+  @extends SC.ArrayObjectController
 */
-EccapCalc.assetsController = SC.ObjectController.create(
+EccapCalc.assetsController = SC.ArrayController.create(
 /** @scope EccapCalc.assetsController.prototype */ {
 
   // TODO: Add your own code here.

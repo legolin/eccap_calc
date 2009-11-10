@@ -24,7 +24,8 @@ EccapCalc.main = function main() {
 
   // TODO: Set the content property on your primary controller
   // ex: EccapCalc.contactsController.set('content',EccapCalc.contacts);
-	var data = EccapCalc.store.find(EccapCalc.Assets);
+  //var query = SC.Query.local(Todos.Task);
+  var data = EccapCalc.store.find(EccapCalc.Assets);
   EccapCalc.assetsController.set('content', data);
 
 } ;
