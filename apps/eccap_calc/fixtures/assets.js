@@ -14,13 +14,13 @@ EccapCalc.Assets.FIXTURES = [{
 
 guid: 1,
 				description: "401K",
-				value: "100000"
+				value: Number(100000),
 },
 
 {
 guid: 2,
 			description: "Other savings",
-			value: "25000"
+      value: Number(25000),
 },
 	//
 	// { guid: 3,
