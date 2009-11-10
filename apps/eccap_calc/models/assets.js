@@ -11,7 +11,7 @@
   @extends SC.Record
   @version 0.1
 */
-EccapCalc.Assets = SC.Record.extend(
+EccapCalc.Asset = SC.Record.extend(
 /** @scope EccapCalc.Assets.prototype */ {
 
   // TODO: Add your own code here.

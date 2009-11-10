@@ -21,13 +21,8 @@ EccapCalc.main = function main() {
 
   // Step 2. Set the content property on your primary controller.
   // This will make your app come alive!
-
-  // TODO: Set the content property on your primary controller
-  // ex: EccapCalc.contactsController.set('content',EccapCalc.contacts);
-  //var query = SC.Query.local(Todos.Task);
-  var data = EccapCalc.store.find(EccapCalc.Assets);
+  var data = EccapCalc.store.find(EccapCalc.Asset);
   EccapCalc.assetsController.set('content', data);
-
-} ;
+};
 
 function main() { EccapCalc.main(); }

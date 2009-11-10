@@ -10,51 +10,68 @@
 
   @extends SC.View
 */
-EccapCalc.LedgerView = function(x, y, title, arrayController) {
-  var w = 400;  // width
-  var h = 100;  // height
-  var h_label = 25;
+EccapCalc.LedgerView = function(x, y, w, h, title, arrayController) {
+  var h_title = 25;
+  var h_total = 18;
+  var h_add = 25;
+  var h_list = h - h_title - h_add - h_total;
+  var w_value = 100;
+  var w_list = w - w_value;
+  var y_title = y;
+  var y_list = y_title + h_title;
+  var y_add = y_list + h_list + 3;
+  var y_total = y_add + h_add;
 
   return SC.View.extend(
-    /** @scope EccapCalc.LedgerView.prototype */ {
+    SC.CollectionViewDelegate,
 
-    childViews: 'title description value label_total total'.w(),
+    /** @scope EccapCalc.LedgerView.prototype */ {
+    childViews: 'title description value label_total button_add total'.w(),
 
     title: SC.LabelView.design({
       displayValue: title,
       fontWeight: SC.BOLD_WEIGHT,
-      layout: { left: x, top: y, width: w, height: h_label},
+      layout: { left: x, top: y, width: w, height: h_title},
     }),
 
     description: SC.ScrollView.design({
       contentView: SC.ListView.design({
-        layout: { left: x, top: h_label + y, width: w - 100, height: h},
+        layout: { left: x, top: y_list, width: w - w_value, height: h_list},
         contentBinding: arrayController + '.arrangedObjects',
         selectionBinding: arrayController + '.selection',
         contentValueKey: 'description',
-        isEditable: YES,
+        canEditContent: YES,
+        canDeleteContent: YES,
       }),
     }),
 
     value: SC.ScrollView.design({
       contentView: SC.ListView.design({
-        layout: { left: w + x - 100, top: h_label + y, width: 100, height: h, },
+        layout: { left: w + x - w_value, top: y_list, width: w_value, height: h_list},
         contentBinding: arrayController + '.arrangedObjects',
         selectionBinding: arrayController + '.selection',
         contentValueKey: 'value',
-        isEditable: YES,
+        canEditContent: YES,
+        canDeleteContent: YES,
         classNames: ['numeric'],
       }),
     }),
 
+    button_add: SC.ButtonView.design({
+      layout: { left: x, top: y_add, width: 140, height: h_add},
+      title: 'Add New Asset',
+      target: arrayController,
+      action: "add_item"
+    }),
+
     label_total: SC.LabelView.design({
-      layout: { left: x, top: h_label + y + h, width: w - 100, height: 25},
+      layout: { left: x, top: y_total, width: w - w_value, height: h_add},
       displayValue: 'Total',
       fontWeight: SC.BOLD_WEIGHT,
     }),
 
     total: SC.LabelView.design({
-      layout: { left: w + x - 100, top: h_label + y + h, width: 100, height: 25, },
+      layout: { left: x + w - w_value, top: y_total, width: w_value, height: h_title},
       valueBinding: arrayController + '.total',
       textAlign: SC.ALIGN_RIGHT,
     }),

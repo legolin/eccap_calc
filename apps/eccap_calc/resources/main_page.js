@@ -12,7 +12,7 @@ EccapCalc.mainPage = SC.Page.design({
   // load.
   mainPane: SC.MainPane.design({
     childViews: 'assetsView'.w(),
-    assetsView: EccapCalc.LedgerView(100, 100, 'Liquid Assets', 'EccapCalc.assetsController'),
+    assetsView: EccapCalc.LedgerView(100, 100, 400, 200, 'Liquid Assets', 'EccapCalc.assetsController'),
 /*
     zipcodeView: SC.TextFieldView.design({
       layout: { centerX: 0, centerY: 350, width: 100, height: 18 },
