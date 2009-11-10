@@ -28,7 +28,7 @@ EccapCalc.LedgerView = function(x, y, title, arrayController) {
 
     description: SC.ScrollView.design({
       contentView: SC.ListView.design({
-        layout: { left: x, top: h_label + y, width: w, height: h},
+        layout: { left: x, top: h_label + y, width: w - 100, height: h},
         contentBinding: arrayController + '.arrangedObjects',
         selectionBinding: arrayController + '.selection',
         contentValueKey: 'description',
@@ -38,23 +38,25 @@ EccapCalc.LedgerView = function(x, y, title, arrayController) {
 
     value: SC.ScrollView.design({
       contentView: SC.ListView.design({
-        layout: { left: w + x, top: h_label + y, width: 100, height: h},
+        layout: { left: w + x - 100, top: h_label + y, width: 100, height: h, },
         contentBinding: arrayController + '.arrangedObjects',
         selectionBinding: arrayController + '.selection',
         contentValueKey: 'value',
         isEditable: YES,
-      }).classNames('numeric'),
+        classNames: ['numeric'],
+      }),
     }),
 
     label_total: SC.LabelView.design({
-      layout: { left: x, top: h_label + y + h, width: w, height: 25},
+      layout: { left: x, top: h_label + y + h, width: w - 100, height: 25},
       displayValue: 'Total',
       fontWeight: SC.BOLD_WEIGHT,
     }),
 
     total: SC.LabelView.design({
-      layout: { left: w + x, top: h_label + y + h, width: 100, height: 25},
+      layout: { left: w + x - 100, top: h_label + y + h, width: 100, height: 25, },
       valueBinding: arrayController + '.total',
-    }).classNames('numeric'),
+      textAlign: SC.ALIGN_RIGHT,
+    }),
   });
 }
