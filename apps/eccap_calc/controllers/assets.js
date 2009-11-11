@@ -18,10 +18,10 @@ EccapCalc.assetsController = SC.ArrayController.create(
 
   total: function() {
     return this.reduce(this.reduce_total, 0);
-  }.property('.value'),
+  }.property('[]').cacheable(),
 
   reduce_total: function(prev, asset, index, enm) {
-    return prev + asset.get('value');
+    return Number(prev) + Number(asset.get('value'));
   },
 
   add_item: function() {
@@ -41,7 +41,6 @@ EccapCalc.assetsController = SC.ArrayController.create(
       var listItem = list.assetViewForContentIndex(contentIndex);
       listItem.beginEditing();
     });
-
     return YES ;
   },
     
