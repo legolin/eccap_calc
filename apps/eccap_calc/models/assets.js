@@ -14,6 +14,6 @@
 EccapCalc.Asset = SC.Record.extend(
 /** @scope EccapCalc.Assets.prototype */ {
 
-  // TODO: Add your own code here.
-
+    description: SC.Record.attr(String),
+    value: SC.Record.attr(Number),
 }) ;
