@@ -7,11 +7,6 @@
 sc_require('models/assets');
 
 EccapCalc.Asset.FIXTURES = [{
-
-	// TODO: Add your data fixtures here.
-	// All fixture records must have a unique primary key (default 'guid').  See 
-	// the example below.
-
     guid: 1,
     description: "401K",
     value: Number(100000),
