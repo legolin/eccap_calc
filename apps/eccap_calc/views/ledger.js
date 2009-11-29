@@ -35,26 +35,30 @@ EccapCalc.LedgerView = function(x, y, w, h, title, arrayController) {
     }),
 
     description: SC.ScrollView.design({
+			classNames: 'description'.w(),
+      layout: { left: x, top: y_list, width: w - w_value - 15, height: h_list},
       contentView: SC.ListView.design({
-        layout: { left: x, top: y_list, width: w - w_value, height: h_list},
         contentBinding: arrayController + '.arrangedObjects',
         selectionBinding: arrayController + '.selection',
         contentValueKey: 'description',
         canEditContent: YES,
-        canDeleteContent: YES,
+        canDeleteContent: YES
       }),
+		  verticalScrollOffsetBinding: arrayController + '.verticalOffset',
+			verticalScrollerView: SC.ScrollerView.extend({scrollerThickness: 0})
     }),
 
     value: SC.ScrollView.design({
+      layout: { left: w + x - w_value - 15, top: y_list, width: w_value, height: h_list},
       contentView: SC.ListView.design({
-        layout: { left: w + x - w_value, top: y_list, width: w_value, height: h_list},
         contentBinding: arrayController + '.arrangedObjects',
         selectionBinding: arrayController + '.selection',
         contentValueKey: 'value',
         canEditContent: YES,
         canDeleteContent: YES,
-        classNames: ['numeric'],
+        classNames: ['numeric']
       }),
+		  verticalScrollOffsetBinding: arrayController + '.verticalOffset'
     }),
 
     button_add: SC.ButtonView.design({

@@ -15,6 +15,8 @@ EccapCalc.assetsController = SC.ArrayController.create(
   SC.CollectionViewDelegate,
     
 /** @scope EccapCalc.assetsController.prototype */ {
+	
+	verticalOffset: 0,
 
   total: function() {
     return this.reduce(this.reduce_total, 0);
