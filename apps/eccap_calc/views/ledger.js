@@ -30,7 +30,8 @@ EccapCalc.LedgerView = function(x, y, w, h, title, arrayController) {
 		layout: { left: x, top: y, width: w, height: h},
 
     title: SC.LabelView.design({
-      displayValue: title,
+      //displayValue: title,
+      valueBinding: arrayController + '.title',
       fontWeight: SC.BOLD_WEIGHT,
       layout: { left: 0, top: 0, width: w, height: h_title},
     }),

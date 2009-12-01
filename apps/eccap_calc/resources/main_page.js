@@ -4,6 +4,10 @@
 // ==========================================================================
 /*globals EccapCalc */
 
+EccapCalc.assetsLedgerController = EccapCalc.ledgerController('mainPane.assetsView', 'assets');
+EccapCalc.incomeLedgerController = EccapCalc.ledgerController('mainPane.incomeView', 'income');
+EccapCalc.expensesLedgerController = EccapCalc.ledgerController('mainPane.expensesView', 'expenses');
+
 // This page describes the main user interface for your application.  
 EccapCalc.mainPage = SC.Page.design({
 
@@ -11,12 +15,10 @@ EccapCalc.mainPage = SC.Page.design({
   // Add childViews to this pane for views to display immediately on page 
   // load.
   mainPane: SC.MainPane.design({
-    childViews: 'assetsView'.w(),
+    childViews: 'assetsView incomeView expensesView'.w(),
     assetsView: EccapCalc.LedgerView(100, 100, 400, 200, 'Liquid Assets', 'EccapCalc.assetsLedgerController'),
-/*
-    assetsView2: EccapCalc.LedgerView(100, 350, 400, 200, 'Liquid Assets2', 'EccapCalc.ledgerController'),
-    assetsView3: EccapCalc.LedgerView(100, 600, 400, 200, 'Liquid Assets3', 'EccapCalc.ledgerController'),
-*/
+    incomeView: EccapCalc.LedgerView(100, 350, 400, 200, 'Monthly Income', 'EccapCalc.incomeLedgerController'),
+    expensesView: EccapCalc.LedgerView(100, 600, 400, 200, 'Monthly Expenses', 'EccapCalc.expensesLedgerController'),
   }),
 
 });
