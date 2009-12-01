@@ -10,7 +10,7 @@
 
   @extends SC.View
 */
-EccapCalc.LedgerView = function(x, y, w, h, title, arrayController) {
+EccapCalc.LedgerView = function(x, y, w, h, arrayController) {
   var h_title = 25;
   var h_total = 18;
   var h_add = 25;
