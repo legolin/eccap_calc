@@ -20,7 +20,7 @@ EccapCalc.LedgerEntry = SC.Record.extend(
   }),
   amount: SC.Record.attr(SC.T_NUMBER, {
     defaultValue: 0,
-    isRequired: NO,
+    isRequired: YES,
   }),
   ledger: SC.Record.toOne('EccapCalc.Ledger', {
     inverse: 'entries',
