@@ -38,7 +38,7 @@ EccapCalc.ledgerController = function(view, ledger) {
       // activate inline editor once UI can repaint
       this.invokeLater(function() {
         var contentIndex = this.indexOf(ledger_entry);
-        var list = EccapCalc.mainPage.getPath(view);
+        var list = EccapCalc.mainPage.getPath(view + '.description.contentView');
         var listItem = list.itemViewForContentIndex(contentIndex);
         listItem.beginEditing();
       });
