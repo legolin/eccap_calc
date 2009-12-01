@@ -21,8 +21,8 @@ EccapCalc.main = function main() {
 
   // Step 2. Set the content property on your primary controller.
   // This will make your app come alive!
-  var data = EccapCalc.store.find(EccapCalc.Asset);
-  EccapCalc.assetsController.set('content', data);
+  var data = EccapCalc.store.find(EccapCalc.LedgerEntry);
+  EccapCalc.assetsLedgerController.set('content', data);
 };
 
 function main() { EccapCalc.main(); }
