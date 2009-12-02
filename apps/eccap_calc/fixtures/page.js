@@ -8,9 +8,11 @@ sc_require('models/page');
 
 EccapCalc.PersonalPage.FIXTURES = [{
     guid: 'personal',
-    title: 'Personal',
     account: 'account-1',
-  }, {
+  },
+];
+
+EccapCalc.FacilityPage.FIXTURES = [{
     guid: 'facility-1',
     title: 'Facility 1',
     account: 'account-1',

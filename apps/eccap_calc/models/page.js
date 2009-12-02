@@ -21,10 +21,6 @@ EccapCalc.Page = SC.Record.extend(
 });
 
 EccapCalc.PersonalPage = EccapCalc.Page.extend({
-  title: SC.Record.attr(SC.T_STRING, {
-    defaultValue: 'Personal',
-    isEditable: NO,
-  }),
   account: SC.Record.toOne('EccapCalc.Account', {
     inverse: 'personal_page',
     isMaster: NO,
