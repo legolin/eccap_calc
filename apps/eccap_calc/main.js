@@ -21,8 +21,10 @@ EccapCalc.main = function main() {
 
   // Step 2. Set the content property on your primary controller.
   // This will make your app come alive!
-  var q = SC.Query.local(EccapCalc.LedgerEntry, 'ledger = {id}', {id: 'assets'});
+  var assets_ledger = EccapCalc.store.find(EccapCalc.Ledger, 'assets');
+  var q = SC.Query.local(EccapCalc.LedgerEntry, {conditions: 'ledger = {ledger}', ledger: assets_ledger});
   var data = EccapCalc.store.find(q);
+  //var asset_entries = EccapCalc.findLedgerEntries();
 console.log(data.length());
   EccapCalc.assetsLedgerController.set('content', data);
 };
