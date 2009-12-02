@@ -10,7 +10,7 @@
 
   @extends SC.View
 */
-EccapCalc.LedgerView = function(x, y, w, h, title, arrayController) {
+EccapCalc.LedgerView = function(x, y, w, h, arrayController) {
   var h_title = 25;
   var h_total = 18;
   var h_add = 25;
@@ -30,7 +30,8 @@ EccapCalc.LedgerView = function(x, y, w, h, title, arrayController) {
 		layout: { left: x, top: y, width: w, height: h},
 
     title: SC.LabelView.design({
-      displayValue: title,
+      //displayValue: title,
+      valueBinding: arrayController + '.title',
       fontWeight: SC.BOLD_WEIGHT,
       layout: { left: 0, top: 0, width: w, height: h_title},
     }),

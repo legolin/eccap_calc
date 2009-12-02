@@ -7,31 +7,31 @@
 sc_require('models/ledger');
 
 EccapCalc.Ledger.FIXTURES = [{
-    guid: 'assets,',
+    guid: 'assets',
     title: 'Net Liquid Assets',
     recurring: NO,
     credit: YES,
     page: 'personal'
   }, {
-    guid: 'income,',
+    guid: 'income',
     title: 'Monthly Income',
     recurring: YES,
     credit: YES,
     page: 'personal'
   }, {
-    guid: 'expenses,',
+    guid: 'expenses',
     title: 'Monthly Expenses',
     recurring: YES,
     credit: NO,
     page: 'personal'
   }, {
-    guid: 'facility-1-initial,',
+    guid: 'facility-1-initial',
     title: 'Initial Fees and Costs',
     recurring: NO,
     credit: NO,
     page: 'facility-1'
   }, {
-    guid: 'facility-1-monthly,',
+    guid: 'facility-1-monthly',
     title: 'Monthly Fees and Expenses',
     recurring: YES,
     credit: NO,
