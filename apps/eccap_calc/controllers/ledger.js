@@ -19,12 +19,14 @@ EccapCalc.ledgerController = function(view, ledger_id) {
     verticalOffset: 0,
 
     ledger: function() {
+      console.log( EccapCalc.store.find(EccapCalc.Ledger, 'foobar'));
       return EccapCalc.store.find(EccapCalc.Ledger, ledger_id);
     }.property().cacheable(),
 
     title: function() {
-      return this.getPath('ledger.title');
-    }.property('ledger'),
+      //return this.getPath('ledger.title');
+      return this.ledger().get('title');
+    }.property('ledger').cacheable(),
 
     total: function() {
       return this.reduce(this.reduce_total, 0);
