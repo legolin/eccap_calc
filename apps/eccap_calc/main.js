@@ -22,6 +22,8 @@ EccapCalc.main = function main() {
   // Step 2. Set the content property on your primary controller.
   // This will make your app come alive!
   EccapCalc.assetsLedgerController.set('content', EccapCalc.findLedgerEntries('assets'));
+  EccapCalc.incomeLedgerController.set('content', EccapCalc.findLedgerEntries('income'));
+  EccapCalc.expensesLedgerController.set('content', EccapCalc.findLedgerEntries('expenses'));
 };
 
 function main() { EccapCalc.main(); }

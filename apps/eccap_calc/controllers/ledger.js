@@ -62,3 +62,5 @@ EccapCalc.ledgerController = function(view, ledger) {
 };
 
 EccapCalc.assetsLedgerController = EccapCalc.ledgerController('mainPane.assetsView', 'assets');
+EccapCalc.incomeLedgerController = EccapCalc.ledgerController('mainPane.incomeView', 'income');
+EccapCalc.expensesLedgerController = EccapCalc.ledgerController('mainPane.expensesView', 'expenses');
