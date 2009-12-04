@@ -4,9 +4,6 @@
 // ==========================================================================
 /*globals EccapCalc */
 
-EccapCalc.assetsLedgerController = EccapCalc.ledgerController('mainPane.assetsView', 'assets');
-EccapCalc.incomeLedgerController = EccapCalc.ledgerController('mainPane.incomeView', 'income');
-EccapCalc.expensesLedgerController = EccapCalc.ledgerController('mainPane.expensesView', 'expenses');
 EccapCalc.LEFT_MARGIN_SCROLL = 200;
 EccapCalc.LEFT_MARGIN_LEDGERS = 50;
 
