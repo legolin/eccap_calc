@@ -46,16 +46,15 @@ EccapCalc.mainPage = SC.Page.design({
     childViews: [
       SC.ScrollView.design({
         contentView: SC.View.design({
-          childViews: [
-            SC.LabelView.design({
-              layout: { left: EccapCalc.LEFT_MARGIN, top: 0, height: 50},
-              displayValue: 'Facility-1',
-              //fontWeight: SC.BOLD_WEIGHT,
-              tagName: 'h1',
-            }),
-            EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN, 100, 'EccapCalc.initialExpensesController'),
-            EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN, 350, 'EccapCalc.monthlyFacilityCostsController'),
-          ],
+          childViews: 'labelView ledger1 ledger2'.w(),
+          labelView: SC.LabelView.design({
+            layout: { left: EccapCalc.LEFT_MARGIN, top: 0, height: 50},
+            displayValue: 'Facility-1',
+            //fontWeight: SC.BOLD_WEIGHT,
+            tagName: 'h1',
+          }),
+          ledger1: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN, 100, 'EccapCalc.initialFacilityCostsController'),
+          ledger2: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN, 350, 'EccapCalc.monthlyFacilityCostsController'),
         }),
       }),
     ],

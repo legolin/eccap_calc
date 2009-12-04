@@ -24,6 +24,10 @@ EccapCalc.main = function main() {
   EccapCalc.assetsLedgerController.set('content', EccapCalc.findLedgerEntries('assets'));
   EccapCalc.incomeLedgerController.set('content', EccapCalc.findLedgerEntries('income'));
   EccapCalc.expensesLedgerController.set('content', EccapCalc.findLedgerEntries('expenses'));
+
+  // TODO - get rid of kludge!!!
+  EccapCalc.initialFacilityCostsController.set('content', EccapCalc.findLedgerEntries('facility-1-initial'));
+  EccapCalc.monthlyFacilityCostsController.set('content', EccapCalc.findLedgerEntries('facility-1-monthly'));
 };
 
 function main() { EccapCalc.main(); }

@@ -73,3 +73,5 @@ EccapCalc.ledgerController = function(view, ledger_id) {
 EccapCalc.assetsLedgerController = EccapCalc.ledgerController('mainPane.assetsView', 'assets');
 EccapCalc.incomeLedgerController = EccapCalc.ledgerController('mainPane.incomeView', 'income');
 EccapCalc.expensesLedgerController = EccapCalc.ledgerController('mainPane.expensesView', 'expenses');
+EccapCalc.initialFacilityCostsController = EccapCalc.ledgerController('mainPane.ledger1', 'facility-1-initial');
+EccapCalc.monthlyFacilityCostsController = EccapCalc.ledgerController('mainPane.ledger2', 'facility-1-monthly');
