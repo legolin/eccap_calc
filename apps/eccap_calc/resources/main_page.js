@@ -7,7 +7,8 @@
 EccapCalc.assetsLedgerController = EccapCalc.ledgerController('mainPane.assetsView', 'assets');
 EccapCalc.incomeLedgerController = EccapCalc.ledgerController('mainPane.incomeView', 'income');
 EccapCalc.expensesLedgerController = EccapCalc.ledgerController('mainPane.expensesView', 'expenses');
-EccapCalc.LEFT_MARGIN = 200;
+EccapCalc.LEFT_MARGIN_SCROLL = 200;
+EccapCalc.LEFT_MARGIN_LEDGERS = 50;
 
 // This page describes the main user interface for your application.  
 EccapCalc.mainPage = SC.Page.design({
@@ -17,9 +18,24 @@ EccapCalc.mainPage = SC.Page.design({
   // load.
   mainPane: SC.MainPane.design({
     childViews: [
+      SC.ButtonView.design({
+        layout: { left: 20, width: 140, top: 100, height: 24 },
+        title: 'Personal',
+        target: 'EccapCalc.pageController',
+        action: 'showPersonalPage',
+      }),
+
+      SC.ButtonView.design({
+        layout: { left: 20, width: 140, top: 150, height: 24 },
+        title: 'Facility-1',
+        target: 'EccapCalc.pageController',
+        action: 'showFacilityPage',
+      }),
+
       SC.ContainerView.design({
-        //nowShowingBinding: 'SampleControls.containerController.nowShowing',
-        nowShowing: 'personalPage',
+        layout: { left: EccapCalc.LEFT_MARGIN_SCROLL, top: 0, bottom: 0, right: 0},
+        nowShowingBinding: 'EccapCalc.pageController.nowShowing',
+        //nowShowing: 'personalPage',
       }),
     ],
   }),
@@ -30,14 +46,14 @@ EccapCalc.mainPage = SC.Page.design({
           childViews: 'labelView assetsView incomeView expensesView'.w(),
 
           labelView: SC.LabelView.design({
-            layout: { left: EccapCalc.LEFT_MARGIN, top: 0, height: 50},
+            layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS, top: 0, height: 50},
             displayValue: 'Personal',
             //fontWeight: SC.BOLD_WEIGHT,
             tagName: 'h1',
           }),
-          assetsView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN, 100, 'EccapCalc.assetsLedgerController'),
-          incomeView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN, 350, 'EccapCalc.incomeLedgerController'),
-          expensesView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN, 600, 'EccapCalc.expensesLedgerController'),
+          assetsView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 100, 'EccapCalc.assetsLedgerController'),
+          incomeView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 350, 'EccapCalc.incomeLedgerController'),
+          expensesView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 600, 'EccapCalc.expensesLedgerController'),
         }),
       }),
     ]
@@ -48,13 +64,13 @@ EccapCalc.mainPage = SC.Page.design({
         contentView: SC.View.design({
           childViews: 'labelView ledger1 ledger2'.w(),
           labelView: SC.LabelView.design({
-            layout: { left: EccapCalc.LEFT_MARGIN, top: 0, height: 50},
+            layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS, top: 0, height: 50},
             displayValue: 'Facility-1',
             //fontWeight: SC.BOLD_WEIGHT,
             tagName: 'h1',
           }),
-          ledger1: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN, 100, 'EccapCalc.initialFacilityCostsController'),
-          ledger2: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN, 350, 'EccapCalc.monthlyFacilityCostsController'),
+          ledger1: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 100, 'EccapCalc.initialFacilityCostsController'),
+          ledger2: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 350, 'EccapCalc.monthlyFacilityCostsController'),
         }),
       }),
     ],
