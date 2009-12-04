@@ -18,3 +18,10 @@ EccapCalc.FacilityPage.FIXTURES = [{
     account: 'account-1',
   },
 ];
+
+EccapCalc.FacilityPage.FIXTURES = [{
+    guid: 'facility-2',
+    title: 'Facility 2',
+    account: 'account-2',
+  },
+];

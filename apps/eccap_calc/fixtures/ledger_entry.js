@@ -56,5 +56,21 @@ EccapCalc.LedgerEntry.FIXTURES = [{
     description: 'Meals',
     amount: '1500',
     ledger: 'facility-1-monthly',
+  }, {
+    guid: '11,',
+    description: 'Initial Deposit',
+    amount: '8000',
+    ledger: 'facility-2-initial',
+  }, {
+    guid: '12,',
+    description: 'Rent',
+    amount: '2500',
+    ledger: 'facility-2-monthly',
+  }, {
+    guid: '13,',
+    description: 'Meals',
+    amount: '1800',
+    ledger: 'facility-2-monthly',
   },
+
 ];

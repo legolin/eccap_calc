@@ -15,10 +15,24 @@ EccapCalc.pageController = SC.Object.create(
   nowShowing: 'personalPage',
 
   showPersonalPage: function() {
-    this.set('nowShowing', 'personalPage');    
+    var page = EccapCalc.store.find(EccapCalc.PersonalPage, 'personal'); 
+    EccapCalc.pageController.set('content', page);
+    this.set('nowShowing', 'personalPage');
   },
 
-  showFacilityPage: function() {
-    this.set('nowShowing', 'facilityPage');    
+  showFacilityPage1: function() {
+    var page = EccapCalc.store.find(EccapCalc.FacilityPage, 'facility-1'); 
+    EccapCalc.pageController.set('content', page);
+    EccapCalc.initialFacilityCostsController.set('content', EccapCalc.findLedgerEntries('facility-1-initial'));
+    EccapCalc.monthlyFacilityCostsController.set('content', EccapCalc.findLedgerEntries('facility-1-monthly'));
+    this.set('nowShowing', 'facilityPage');
+  },
+
+  showFacilityPage2: function() {
+    var page = EccapCalc.store.find(EccapCalc.FacilityPage, 'facility-2'); 
+    EccapCalc.pageController.set('content', page);
+    EccapCalc.initialFacilityCostsController.set('content', EccapCalc.findLedgerEntries('facility-2-initial'));
+    EccapCalc.monthlyFacilityCostsController.set('content', EccapCalc.findLedgerEntries('facility-2-monthly'));
+    this.set('nowShowing', 'facilityPage');
   },
 }) ;

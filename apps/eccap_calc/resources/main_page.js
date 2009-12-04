@@ -29,7 +29,14 @@ EccapCalc.mainPage = SC.Page.design({
         layout: { left: 20, width: 140, top: 150, height: 24 },
         title: 'Facility-1',
         target: 'EccapCalc.pageController',
-        action: 'showFacilityPage',
+        action: 'showFacilityPage1',
+      }),
+
+      SC.ButtonView.design({
+        layout: { left: 20, width: 140, top: 200, height: 24 },
+        title: 'Facility-2',
+        target: 'EccapCalc.pageController',
+        action: 'showFacilityPage2',
       }),
 
       SC.ContainerView.design({
@@ -65,12 +72,14 @@ EccapCalc.mainPage = SC.Page.design({
           childViews: 'labelView ledger1 ledger2'.w(),
           labelView: SC.LabelView.design({
             layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS, top: 0, height: 50},
-            displayValue: 'Facility-1',
+            valueBinding: 'EccapCalc.pageController.title',
             //fontWeight: SC.BOLD_WEIGHT,
             tagName: 'h1',
           }),
-          ledger1: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 100, 'EccapCalc.initialFacilityCostsController'),
-          ledger2: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 350, 'EccapCalc.monthlyFacilityCostsController'),
+          ledger1: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 100, 
+                    'EccapCalc.initialFacilityCostsController'),
+          ledger2: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 350, 
+                    'EccapCalc.monthlyFacilityCostsController'),
         }),
       }),
     ],
