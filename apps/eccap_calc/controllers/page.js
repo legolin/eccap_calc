@@ -35,4 +35,9 @@ EccapCalc.pageController = SC.Object.create(
     EccapCalc.monthlyFacilityCostsController.set('content', EccapCalc.findLedgerEntries('facility-2-monthly'));
     this.set('nowShowing', 'facilityPage');
   },
+
+  // Shouldn't this already be delegated to content object?
+    title: function() {
+      return this.content.get('title');
+    }.property('content').cacheable(),
 }) ;
