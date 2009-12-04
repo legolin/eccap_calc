@@ -10,7 +10,7 @@
 
   @extends SC.Object
 */
-EccapCalc.pageController = SC.Object.create(
+EccapCalc.pageController = SC.ObjectController.create(
 /** @scope EccapCalc.pageController.prototype */ {
   nowShowing: 'personalPage',
 
@@ -36,8 +36,4 @@ EccapCalc.pageController = SC.Object.create(
     this.set('nowShowing', 'facilityPage');
   },
 
-  // Shouldn't this already be delegated to content object?
-    title: function() {
-      return this.content.get('title');
-    }.property('content').cacheable(),
 }) ;
