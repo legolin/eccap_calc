@@ -9,6 +9,7 @@
     @param ledger String, guid of ledger
 */
 EccapCalc.ledgerController = function(view, ledger_id) {
+
   /** @class
       @extends SC.ArrayController
   */
@@ -18,9 +19,11 @@ EccapCalc.ledgerController = function(view, ledger_id) {
     /** @scope EccapCalc.ledgerController.prototype */ {
     verticalOffset: 0,
 
+    ledger_id: ledger_id,
+
     ledger: function() {
-      return EccapCalc.store.find(EccapCalc.Ledger, ledger_id);
-    }.property().cacheable(),
+      return EccapCalc.store.find(EccapCalc.Ledger, this.ledger_id);
+    }.property('ledger_id').cacheable(),
 
     title: function() {
       //return this.getPath('ledger.title');
@@ -37,8 +40,10 @@ EccapCalc.ledgerController = function(view, ledger_id) {
 
     add_item: function() {
       // create new LedgerEntry and add it to the list
+      var that = this;
       var ledger_entry = EccapCalc.store.createRecord(EccapCalc.LedgerEntry, {
-        ledger: ledger_id,
+        //ledger: ledger_id,
+        ledger: that.ledger().get('id'),
       });
 
       // select new LedgerEntry in UI

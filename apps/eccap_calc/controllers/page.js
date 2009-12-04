@@ -24,7 +24,9 @@ EccapCalc.pageController = SC.ObjectController.create(
     var page = EccapCalc.store.find(EccapCalc.FacilityPage, 'facility-1'); 
     EccapCalc.pageController.set('content', page);
     EccapCalc.initialFacilityCostsController.set('content', EccapCalc.findLedgerEntries('facility-1-initial'));
+    EccapCalc.initialFacilityCostsController.ledger_id = 'facility-1-initial';
     EccapCalc.monthlyFacilityCostsController.set('content', EccapCalc.findLedgerEntries('facility-1-monthly'));
+    EccapCalc.monthlyFacilityCostsController.ledger_id = 'facility-1-monthly';
     this.set('nowShowing', 'facilityPage');
   },
 
@@ -32,7 +34,9 @@ EccapCalc.pageController = SC.ObjectController.create(
     var page = EccapCalc.store.find(EccapCalc.FacilityPage, 'facility-2'); 
     EccapCalc.pageController.set('content', page);
     EccapCalc.initialFacilityCostsController.set('content', EccapCalc.findLedgerEntries('facility-2-initial'));
+    EccapCalc.initialFacilityCostsController.ledger_id = 'facility-2-initial';
     EccapCalc.monthlyFacilityCostsController.set('content', EccapCalc.findLedgerEntries('facility-2-monthly'));
+    EccapCalc.monthlyFacilityCostsController.ledger_id = 'facility-2-monthly';
     this.set('nowShowing', 'facilityPage');
   },
 
