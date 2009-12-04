@@ -7,6 +7,7 @@
 EccapCalc.assetsLedgerController = EccapCalc.ledgerController('mainPane.assetsView', 'assets');
 EccapCalc.incomeLedgerController = EccapCalc.ledgerController('mainPane.incomeView', 'income');
 EccapCalc.expensesLedgerController = EccapCalc.ledgerController('mainPane.expensesView', 'expenses');
+EccapCalc.LEFT_MARGIN = 200;
 
 // This page describes the main user interface for your application.  
 EccapCalc.mainPage = SC.Page.design({
@@ -15,20 +16,28 @@ EccapCalc.mainPage = SC.Page.design({
   // Add childViews to this pane for views to display immediately on page 
   // load.
   mainPane: SC.MainPane.design({
+    childViews: [
+      SC.ContainerView.design({
+        //nowShowingBinding: 'SampleControls.containerController.nowShowing',
+        nowShowing: 'personalPage',
+      }),
+    ],
+  }),
+  personalPage: SC.View.design({
     childViews: 'scrollView'.w(),
     scrollView: SC.ScrollView.design({
       contentView: SC.View.design({
 				childViews: 'labelView assetsView incomeView expensesView'.w(),
 
 				labelView: SC.LabelView.design({
-					layout: { left: 100, top: 0, height: 50},
+					layout: { left: EccapCalc.LEFT_MARGIN, top: 0, height: 50},
 					displayValue: 'Personal',
 					//fontWeight: SC.BOLD_WEIGHT,
 					tagName: 'h1',
 				}),
-				assetsView: EccapCalc.LedgerView(100, 100, 'EccapCalc.assetsLedgerController'),
-				incomeView: EccapCalc.LedgerView(100, 350, 'EccapCalc.incomeLedgerController'),
-				expensesView: EccapCalc.LedgerView(100, 600, 'EccapCalc.expensesLedgerController'),
+				assetsView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN, 100, 'EccapCalc.assetsLedgerController'),
+				incomeView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN, 350, 'EccapCalc.incomeLedgerController'),
+				expensesView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN, 600, 'EccapCalc.expensesLedgerController'),
 			}),
 		}),
   }),
