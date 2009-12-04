@@ -24,21 +24,40 @@ EccapCalc.mainPage = SC.Page.design({
     ],
   }),
   personalPage: SC.View.design({
-    childViews: 'scrollView'.w(),
-    scrollView: SC.ScrollView.design({
-      contentView: SC.View.design({
-				childViews: 'labelView assetsView incomeView expensesView'.w(),
+    childViews: [
+      SC.ScrollView.design({
+        contentView: SC.View.design({
+          childViews: 'labelView assetsView incomeView expensesView'.w(),
 
-				labelView: SC.LabelView.design({
-					layout: { left: EccapCalc.LEFT_MARGIN, top: 0, height: 50},
-					displayValue: 'Personal',
-					//fontWeight: SC.BOLD_WEIGHT,
-					tagName: 'h1',
-				}),
-				assetsView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN, 100, 'EccapCalc.assetsLedgerController'),
-				incomeView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN, 350, 'EccapCalc.incomeLedgerController'),
-				expensesView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN, 600, 'EccapCalc.expensesLedgerController'),
-			}),
-		}),
+          labelView: SC.LabelView.design({
+            layout: { left: EccapCalc.LEFT_MARGIN, top: 0, height: 50},
+            displayValue: 'Personal',
+            //fontWeight: SC.BOLD_WEIGHT,
+            tagName: 'h1',
+          }),
+          assetsView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN, 100, 'EccapCalc.assetsLedgerController'),
+          incomeView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN, 350, 'EccapCalc.incomeLedgerController'),
+          expensesView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN, 600, 'EccapCalc.expensesLedgerController'),
+        }),
+      }),
+    ]
+  }),
+  facilityPage: SC.View.design({
+    childViews: [
+      SC.ScrollView.design({
+        contentView: SC.View.design({
+          childViews: [
+            SC.LabelView.design({
+              layout: { left: EccapCalc.LEFT_MARGIN, top: 0, height: 50},
+              displayValue: 'Facility-1',
+              //fontWeight: SC.BOLD_WEIGHT,
+              tagName: 'h1',
+            }),
+            EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN, 100, 'EccapCalc.initialExpensesController'),
+            EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN, 350, 'EccapCalc.monthlyFacilityCostsController'),
+          ],
+        }),
+      }),
+    ],
   }),
 });
