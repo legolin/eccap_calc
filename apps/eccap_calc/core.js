@@ -20,8 +20,12 @@ EccapCalc = SC.Application.create(
   // of your model data.  You can also set a data source on this store to
   // connect to a backend server.  The default setup below connects the store
   // to any fixtures you define.
-  store: SC.Store.create().from(SC.Record.fixtures)
+  store: SC.Store.create().from(SC.Record.fixtures),
   
   // TODO: Add global constants or singleton objects needed by your app here.
-
+  findLedgerEntries: function(ledger_id) {
+    var ledger = EccapCalc.store.find(EccapCalc.Ledger, ledger_id);
+    var q = SC.Query.local(EccapCalc.LedgerEntry, {conditions: 'ledger = {ledger}', ledger: ledger});
+    return EccapCalc.store.find(q);
+  },
 }) ;

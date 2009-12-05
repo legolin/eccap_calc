@@ -10,33 +10,37 @@
 
   @extends SC.View
 */
-EccapCalc.LedgerView = function(x, y, w, h, title, arrayController) {
+EccapCalc.LedgerView = function(x, y, arrayController) {
+  var w = 400;  // width
+  var h = 200;  // height
   var h_title = 25;
   var h_total = 18;
   var h_add = 25;
   var h_list = h - h_title - h_add - h_total;
-  var w_value = 100;
-  var w_list = w - w_value;
-  var y_title = y;
+  var w_amount = 80;
+  var w_list = w - w_amount;
+  var y_title = 0;
   var y_list = y_title + h_title;
-  var y_add = y_list + h_list + 3;
-  var y_total = y_add + h_add;
+  var y_total = y_list + h_list + 3;
+  var x_total = w - w_amount - 32; // 16 is width of scroll bar
 
   return SC.View.extend(
     SC.CollectionViewDelegate,
 
     /** @scope EccapCalc.LedgerView.prototype */ {
-    childViews: 'title description value label_total button_add total'.w(),
+    childViews: 'title description amount label_total button_add total'.w(),
+		layout: { left: x, top: y, width: w, height: h},
 
     title: SC.LabelView.design({
-      displayValue: title,
+      //displayValue: title,
+      valueBinding: arrayController + '.title',
       fontWeight: SC.BOLD_WEIGHT,
-      layout: { left: x, top: y, width: w, height: h_title},
+      layout: { left: 0, top: 0, width: w, height: h_title},
     }),
 
     description: SC.ScrollView.design({
 			classNames: 'description'.w(),
-      layout: { left: x, top: y_list, width: w - w_value - 15, height: h_list},
+      layout: { left: 0, top: y_list, width: w - w_amount - 15, height: h_list},
       contentView: SC.ListView.design({
         contentBinding: arrayController + '.arrangedObjects',
         selectionBinding: arrayController + '.selection',
@@ -48,12 +52,12 @@ EccapCalc.LedgerView = function(x, y, w, h, title, arrayController) {
 			verticalScrollerView: SC.ScrollerView.extend({scrollerThickness: 0})
     }),
 
-    value: SC.ScrollView.design({
-      layout: { left: w + x - w_value - 15, top: y_list, width: w_value, height: h_list},
+    amount: SC.ScrollView.design({
+      layout: { left: w - w_amount - 15, top: y_list, width: w_amount, height: h_list},
       contentView: SC.ListView.design({
         contentBinding: arrayController + '.arrangedObjects',
         selectionBinding: arrayController + '.selection',
-        contentValueKey: 'value',
+        contentValueKey: 'amount',
         canEditContent: YES,
         canDeleteContent: YES,
         classNames: ['numeric']
@@ -62,20 +66,20 @@ EccapCalc.LedgerView = function(x, y, w, h, title, arrayController) {
     }),
 
     button_add: SC.ButtonView.design({
-      layout: { left: x, top: y_add, width: 140, height: h_add},
-      title: 'Add New Asset',
+      layout: { right: 32, top: 0, width: 100, height: h_add},
+      title: 'New Item',
       target: arrayController,
       action: "add_item"
     }),
 
     label_total: SC.LabelView.design({
-      layout: { left: x, top: y_total, width: w - w_value, height: h_add},
+      layout: { left: 0, top: y_total, width: w - w_amount, height: h_add},
       displayValue: 'Total',
       fontWeight: SC.BOLD_WEIGHT,
     }),
 
     total: SC.LabelView.design({
-      layout: { left: x + w - w_value, top: y_total, width: w_value, height: h_title},
+      layout: { left: x_total, top: y_total, width: w_amount, height: h_title},
       valueBinding: arrayController + '.total',
       textAlign: SC.ALIGN_RIGHT,
     }),
