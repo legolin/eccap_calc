@@ -36,5 +36,17 @@ EccapCalc.Ledger.FIXTURES = [{
     recurring: YES,
     credit: NO,
     page: 'facility-1'
+  }, {
+    guid: 'facility-2-initial',
+    title: 'Initial Fees and Costs',
+    recurring: NO,
+    credit: NO,
+    page: 'facility-2'
+  }, {
+    guid: 'facility-2-monthly',
+    title: 'Monthly Fees and Expenses',
+    recurring: YES,
+    credit: NO,
+    page: 'facility-2'
   }, 
 ];

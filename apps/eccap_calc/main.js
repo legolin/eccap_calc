@@ -24,6 +24,7 @@ EccapCalc.main = function main() {
   EccapCalc.assetsLedgerController.set('content', EccapCalc.findLedgerEntries('assets'));
   EccapCalc.incomeLedgerController.set('content', EccapCalc.findLedgerEntries('income'));
   EccapCalc.expensesLedgerController.set('content', EccapCalc.findLedgerEntries('expenses'));
+  EccapCalc.facilitiesViewController.set('content', EccapCalc.store.find(EccapCalc.FacilityPage));
   EccapCalc.pageController.showPersonalPage();
 };
 

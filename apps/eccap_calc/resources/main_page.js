@@ -22,6 +22,9 @@ EccapCalc.mainPage = SC.Page.design({
         action: 'showPersonalPage',
       }),
 
+      'facilitiesView',
+
+/*
       SC.ButtonView.design({
         layout: { left: 20, width: 140, top: 150, height: 24 },
         title: 'Facility-1',
@@ -35,13 +38,26 @@ EccapCalc.mainPage = SC.Page.design({
         target: 'EccapCalc.pageController',
         action: 'showFacilityPage2',
       }),
+*/
 
       SC.ContainerView.design({
         layout: { left: EccapCalc.LEFT_MARGIN_SCROLL, top: 0, bottom: 0, right: 0},
         nowShowingBinding: 'EccapCalc.pageController.nowShowing',
-        //nowShowing: 'personalPage',
       }),
     ],
+
+    facilitiesView: SC.ListView.design({
+      layout: { left: 20, width: 140, top: 150, height: 0 },
+      contentBinding: 'EccapCalc.facilitiesViewController.arrangedObjects',
+      selectionBinding: 'EccapCalc.facilitiesViewController.selection',
+      contentValueKey: 'title',
+      //exampleView: SC.ButtonView,
+      target: 'EccapCalc.facilitiesViewController', 
+      action: 'showFacilityPage',
+      actOnSelect: YES,
+      canEditContent: NO,
+      canDeleteContent: NO,
+    }),
   }),
   personalPage: SC.View.design({
     childViews: [
