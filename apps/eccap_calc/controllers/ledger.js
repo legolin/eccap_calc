@@ -26,9 +26,8 @@ EccapCalc.ledgerController = function(view, ledger_id) {
     }.property('ledger_id').cacheable(),
 
     title: function() {
-      //return this.getPath('ledger.title');
       return this.ledger().get('title');
-    }.property('ledger').cacheable(),
+    }.property('ledger_id').cacheable(),
 
     total: function() {
       return this.reduce(this.reduce_total, 0);
