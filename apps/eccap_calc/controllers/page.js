@@ -15,7 +15,6 @@ EccapCalc.pageController = SC.ObjectController.create(
   nowShowing: 'personalPage',
 
   showPersonalPage: function() {
-console.log(this);
     // TODO - get this from account
     this.page = EccapCalc.store.find(EccapCalc.PersonalPage, 'personal'); 
 
