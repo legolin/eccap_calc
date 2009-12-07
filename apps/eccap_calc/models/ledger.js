@@ -12,7 +12,7 @@
   @extends SC.Record
   @version 0.1
 */
-EccapCalc.Ledger = SC.Record.extend(
+EccapCalc.Ledger_ = SC.Record.extend(
   /** @scope EccapCalc.Ledger.prototype */ {
 
   title: SC.Record.attr(SC.T_STRING, {
@@ -36,3 +36,15 @@ EccapCalc.Ledger = SC.Record.extend(
     isMaster: NO,
   }),
 }) ;
+
+EccapCalc.Ledger = EccapCalc.store.dataSource.instanceOf(SC.FixturesDataSource)
+  ? EccapCalc.Ledger_.extend({
+    entries: function() {
+      var q = SC.Query.local(EccapCalc.LedgerEntry, {
+        conditions: 'ledger = {ledger}', 
+        ledger: this,
+      });
+      return this.get('store').find(q);
+     }.property().cacheable() 
+  })
+  : EccapCalc.Ledger_.extend();
