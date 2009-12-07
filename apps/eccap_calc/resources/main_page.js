@@ -22,7 +22,7 @@ EccapCalc.mainPage = SC.Page.design({
         action: 'showPersonalPage',
       }),
 
-      'facilitiesView',
+      'pageSelector',
 
       SC.ContainerView.design({
         layout: { left: EccapCalc.LEFT_MARGIN_SCROLL, top: 0, bottom: 0, right: 0},
@@ -30,7 +30,7 @@ EccapCalc.mainPage = SC.Page.design({
       }),
     ],
 
-    facilitiesView: SC.ListView.design({
+    pageSelector: SC.ListView.design({
       layout: { left: 20, width: 140, top: 150, height: 0 },
       contentBinding: 'EccapCalc.pageSelectorController.arrangedObjects',
       selectionBinding: 'EccapCalc.pageSelectorController.selection',
