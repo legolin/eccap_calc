@@ -18,7 +18,7 @@ EccapCalc.ledgerController = function(view, ledger_id) {
 
     /** @scope EccapCalc.ledgerController.prototype */ {
     verticalOffset: 0,
-
+    page: null,
     ledger_id: ledger_id,
 
     ledger: function() {
@@ -77,5 +77,13 @@ EccapCalc.ledgerController = function(view, ledger_id) {
 EccapCalc.assetsLedgerController = EccapCalc.ledgerController('mainPane.assetsView', 'assets');
 EccapCalc.incomeLedgerController = EccapCalc.ledgerController('mainPane.incomeView', 'income');
 EccapCalc.expensesLedgerController = EccapCalc.ledgerController('mainPane.expensesView', 'expenses');
-EccapCalc.initialFacilityCostsController = EccapCalc.ledgerController('mainPane.ledger1', 'facility-1-initial');
-EccapCalc.monthlyFacilityCostsController = EccapCalc.ledgerController('mainPane.ledger2', 'facility-1-monthly');
+
+EccapCalc.initialFacilityCostsController = EccapCalc.ledgerController('mainPane.ledger1');
+EccapCalc.initialFacilityCostsController.content = function() {
+  return EccapCalc.pageController.getPath('page.initialCostsLedger.entries');
+}.property('page').cacheable();
+ 
+EccapCalc.monthlyFacilityCostsController = EccapCalc.ledgerController('mainPane.ledger2');
+EccapCalc.monthlyFacilityCostsController.content = function() {
+  return EccapCalc.pageController.getPath('page.monthlyCostsLedger.entries');
+}.property('page').cacheable();

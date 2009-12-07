@@ -17,21 +17,11 @@ EccapCalc.facilitiesViewController = SC.ArrayController.create(
   allowsMultipleSelection: NO,
 
   showFacilityPage: function() {
-    var page = EccapCalc.facilitiesViewController.selection().firstObject();
-    var ledgers = page.get('ledgers');
-
-    // Assume that there are exactly two ledgers for each page -
-    // the first is the fixed-cost ledger, followed by monthly costs.
-    var initial_cost_ledger = ledgers.objectAt(0);
-    EccapCalc.initialFacilityCostsController.set('content', initial_cost_ledger.get('entries'));
-    EccapCalc.initialFacilityCostsController.ledger_id = initial_costs_ledger.get('id');
-
-    var recurring_cost_ledger = ledgers.objectAt(1);
-    EccapCalc.recurringFacilityCostsController.set('content', recurring_cost_ledger.get('entries'));
-    EccapCalc.recurringFacilityCostsController.ledger_id = recurring_costs_ledger.get('id');
-
+    var page = this.selection().firstObject();
+    EccapCalc.initialFacilityCostsController.set('page', page);
+    EccapCalc.initialFacilityCostsController.set('ledger_id', 'initialCostsLedger');
+    EccapCalc.monthlyFacilityCostsController.set('page', page);
+    EccapCalc.monthlyFacilityCostsController.set('ledger_id', 'monthlyCostsLedger');
     EccapCalc.pageController.set('nowShowing', page.get('id'));
   },
-
-
 }) ;

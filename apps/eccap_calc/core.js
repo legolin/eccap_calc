@@ -23,9 +23,21 @@ EccapCalc = SC.Application.create(
   store: SC.Store.create().from(SC.Record.fixtures),
   
   // TODO: Add global constants or singleton objects needed by your app here.
-  findLedgerEntries: function(ledger_id) {
-    var ledger = EccapCalc.store.find(EccapCalc.Ledger, ledger_id);
-    var q = SC.Query.local(EccapCalc.LedgerEntry, {conditions: 'ledger = {ledger}', ledger: ledger});
-    return EccapCalc.store.find(q);
+
+  load_account: function(account_id) {
+    var account = EccapCalc.store.find(EccapCalc.Account, account_id);
+
+    EccapCalc.account = account;
+    EccapCalc.facilitiesViewController.set('content', account.get('facility_pages'));
+
+    var personal_page = account.get('personal_page');
+    var assets = account.getPath('personal_page.assetsLedger.entries');
+    EccapCalc.assetsLedgerController.set('content', assets);
+
+    var income = account.getPath('personal_page.incomeLedger.entries');
+    EccapCalc.incomeLedgerController.set('content', income);
+
+    var expenses = account.getPath('personal_page.expensesLedger.entries');
+    EccapCalc.expensesLedgerController.set('content', expenses);
   },
-}) ;
+});

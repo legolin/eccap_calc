@@ -24,22 +24,6 @@ EccapCalc.mainPage = SC.Page.design({
 
       'facilitiesView',
 
-/*
-      SC.ButtonView.design({
-        layout: { left: 20, width: 140, top: 150, height: 24 },
-        title: 'Facility-1',
-        target: 'EccapCalc.pageController',
-        action: 'showFacilityPage1',
-      }),
-
-      SC.ButtonView.design({
-        layout: { left: 20, width: 140, top: 200, height: 24 },
-        title: 'Facility-2',
-        target: 'EccapCalc.pageController',
-        action: 'showFacilityPage2',
-      }),
-*/
-
       SC.ContainerView.design({
         layout: { left: EccapCalc.LEFT_MARGIN_SCROLL, top: 0, bottom: 0, right: 0},
         nowShowingBinding: 'EccapCalc.pageController.nowShowing',

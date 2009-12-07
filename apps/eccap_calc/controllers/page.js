@@ -15,8 +15,11 @@ EccapCalc.pageController = SC.ObjectController.create(
   nowShowing: 'personalPage',
 
   showPersonalPage: function() {
-    var page = EccapCalc.store.find(EccapCalc.PersonalPage, 'personal'); 
-    EccapCalc.pageController.set('content', page);
+console.log(this);
+    // TODO - get this from account
+    this.page = EccapCalc.store.find(EccapCalc.PersonalPage, 'personal'); 
+
+    EccapCalc.pageController.set('content', this.page);
     this.set('nowShowing', 'personalPage');
   },
 }) ;

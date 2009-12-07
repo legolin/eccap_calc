@@ -11,5 +11,6 @@ EccapCalc.Account.FIXTURES = [{
     auth_id: 'xyz',
     email: 'foo@bar.com',
     zipcode: '12345',
+    personal_page: 'personal',
   }
 ];

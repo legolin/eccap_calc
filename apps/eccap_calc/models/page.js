@@ -11,23 +11,26 @@
   @extends SC.Record
   @version 0.1
 */
-EccapCalc.Page = SC.Record.extend(
-/** @scope EccapCalc.Page.prototype */ {
-
-  ledgers: SC.Record.toMany('EccapCalc.Ledger', {
+EccapCalc.PersonalPage = SC.Record.extend({
+  account: SC.Record.toOne('EccapCalc.Account', {
+    inverse: 'personal_page',
+    isMaster: NO,
+  }),
+  assetsLedger: SC.Record.toOne('EccapCalc.Ledger', {
+    inverse: 'page',
+    isMaster: YES,
+  }),
+  incomeLedger: SC.Record.toOne('EccapCalc.Ledger', {
+    inverse: 'page',
+    isMaster: YES,
+  }),
+  expensesLedger: SC.Record.toOne('EccapCalc.Ledger', {
     inverse: 'page',
     isMaster: YES,
   }),
 });
 
-EccapCalc.PersonalPage = EccapCalc.Page.extend({
-  account: SC.Record.toOne('EccapCalc.Account', {
-    inverse: 'personal_page',
-    isMaster: NO,
-  }),
-});
-
-EccapCalc.FacilityPage = EccapCalc.Page.extend({
+EccapCalc.FacilityPage = SC.Record.extend({
   title: SC.Record.attr(SC.T_STRING, {
     defaultValue: 'Facility',
     isEditable: YES,
@@ -36,5 +39,13 @@ EccapCalc.FacilityPage = EccapCalc.Page.extend({
   account: SC.Record.toOne('EccapCalc.Account', {
     inverse: 'facility_pages',
     isMaster: NO,
+  }),
+  initialCostsLedger: SC.Record.toOne('EccapCalc.Ledger', {
+    inverse: 'page',
+    isMaster: YES,
+  }),
+  recurringCostsLedger: SC.Record.toOne('EccapCalc.Ledger', {
+    inverse: 'page',
+    isMaster: YES,
   }),
 });

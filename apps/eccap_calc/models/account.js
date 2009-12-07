@@ -11,7 +11,7 @@
   @extends SC.Record
   @version 0.1
 */
-EccapCalc.Account = SC.Record.extend(
+EccapCalc.Account_ = SC.Record.extend(
 /** @scope EccapCalc.Account.prototype */ {
 
   auth_id: SC.Record.attr(SC.T_STRING, {
@@ -35,3 +35,15 @@ EccapCalc.Account = SC.Record.extend(
     isMaster: YES,
   }),
 }) ;
+
+EccapCalc.Account = EccapCalc.store.dataSource.instanceOf(SC.FixturesDataSource)
+  ? EccapCalc.Account_.extend({
+    facility_pages: function() {
+      var q = SC.Query.local(EccapCalc.FacilityPage, {
+        conditions: 'account = {account}', 
+        account: this,
+      });
+      return this.get('store').find(q);
+     }.property().cacheable() 
+  })
+  : EccapCalc.Account_.extend();
