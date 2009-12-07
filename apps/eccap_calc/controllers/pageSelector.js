@@ -26,6 +26,7 @@ EccapCalc.pageSelectorController = SC.ArrayController.create(
     EccapCalc.recurringFacilityCostsController.set('content', page.getPath('recurringCostsLedger.entries'));
 
     EccapCalc.pageController.set('title', page.get('title'));
+    EccapCalc.pageController.set('page', page);
     EccapCalc.pageController.set('nowShowing', 'facilityPage');
   },
 }) ;

@@ -8,7 +8,7 @@
     @param view String, path to view
     @param ledger String, guid of ledger
 */
-EccapCalc.ledgerController = function(view, ledger_id) {
+EccapCalc.ledgerController = function(view, title) {
 
   /** @class
       @extends SC.ArrayController
@@ -19,15 +19,7 @@ EccapCalc.ledgerController = function(view, ledger_id) {
     /** @scope EccapCalc.ledgerController.prototype */ {
     verticalOffset: 0,
     page: null,
-    ledger_id: ledger_id,
-
-    ledger: function() {
-      return EccapCalc.store.find(EccapCalc.Ledger, this.ledger_id);
-    }.property('ledger_id').cacheable(),
-
-    title: function() {
-      return this.ledger().get('title');
-    }.property('ledger_id').cacheable(),
+    title: title,
 
     total: function() {
       return this.reduce(this.reduce_total, 0);
@@ -75,10 +67,10 @@ EccapCalc.ledgerController = function(view, ledger_id) {
 };
 
 // Controllers for personal page
-EccapCalc.assetsLedgerController = EccapCalc.ledgerController('mainPane.assetsView', 'assets');
-EccapCalc.incomeLedgerController = EccapCalc.ledgerController('mainPane.incomeView', 'income');
-EccapCalc.expensesLedgerController = EccapCalc.ledgerController('mainPane.expensesView', 'expenses');
+EccapCalc.assetsLedgerController = EccapCalc.ledgerController('mainPane.assetsView', 'Liquid Assets');
+EccapCalc.incomeLedgerController = EccapCalc.ledgerController('mainPane.incomeView', 'Monthly Income');
+EccapCalc.expensesLedgerController = EccapCalc.ledgerController('mainPane.expensesView', 'Monthly Expenses');
 
 // Controllers for facility page
-EccapCalc.initialFacilityCostsController = EccapCalc.ledgerController('mainPane.ledger1');
-EccapCalc.recurringFacilityCostsController = EccapCalc.ledgerController('mainPane.ledger2');
+EccapCalc.initialFacilityCostsController = EccapCalc.ledgerController('mainPane.ledger1', 'Initial Costs');
+EccapCalc.recurringFacilityCostsController = EccapCalc.ledgerController('mainPane.ledger2', 'Monthly Costs');

@@ -13,6 +13,11 @@
 EccapCalc.pageController = SC.ObjectController.create(
 /** @scope EccapCalc.pageController.prototype */ {
   nowShowing: 'personalPage',
+  page: null,
+
+  title: function() {
+    return this.page.get('title');
+  }.property('page').cacheable(),
 
   showPersonalPage: function() {
     // TODO - get this from account
