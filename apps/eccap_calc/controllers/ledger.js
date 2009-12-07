@@ -74,16 +74,11 @@ EccapCalc.ledgerController = function(view, ledger_id) {
   });
 };
 
+// Controllers for personal page
 EccapCalc.assetsLedgerController = EccapCalc.ledgerController('mainPane.assetsView', 'assets');
 EccapCalc.incomeLedgerController = EccapCalc.ledgerController('mainPane.incomeView', 'income');
 EccapCalc.expensesLedgerController = EccapCalc.ledgerController('mainPane.expensesView', 'expenses');
 
+// Controllers for facility page
 EccapCalc.initialFacilityCostsController = EccapCalc.ledgerController('mainPane.ledger1');
-EccapCalc.initialFacilityCostsController.content = function() {
-  return EccapCalc.pageController.getPath('page.initialCostsLedger.entries');
-}.property('page').cacheable();
- 
-EccapCalc.monthlyFacilityCostsController = EccapCalc.ledgerController('mainPane.ledger2');
-EccapCalc.monthlyFacilityCostsController.content = function() {
-  return EccapCalc.pageController.getPath('page.monthlyCostsLedger.entries');
-}.property('page').cacheable();
+EccapCalc.recurringFacilityCostsController = EccapCalc.ledgerController('mainPane.ledger2');

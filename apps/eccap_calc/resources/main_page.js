@@ -79,7 +79,7 @@ EccapCalc.mainPage = SC.Page.design({
           ledger1: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 100, 
                     'EccapCalc.initialFacilityCostsController'),
           ledger2: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 350, 
-                    'EccapCalc.monthlyFacilityCostsController'),
+                    'EccapCalc.recurringFacilityCostsController'),
         }),
       }),
     ],

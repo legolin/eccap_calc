@@ -31,7 +31,7 @@ EccapCalc.Ledger.FIXTURES = [{
     credit: NO,
     page: 'facility-1'
   }, {
-    guid: 'facility-1-monthly',
+    guid: 'facility-1-recurring',
     title: 'Monthly Fees and Expenses',
     recurring: YES,
     credit: NO,
@@ -43,7 +43,7 @@ EccapCalc.Ledger.FIXTURES = [{
     credit: NO,
     page: 'facility-2'
   }, {
-    guid: 'facility-2-monthly',
+    guid: 'facility-2-recurring',
     title: 'Monthly Fees and Expenses',
     recurring: YES,
     credit: NO,

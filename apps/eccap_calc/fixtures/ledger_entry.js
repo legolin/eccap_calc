@@ -50,12 +50,12 @@ EccapCalc.LedgerEntry.FIXTURES = [{
     guid: '9',
     description: 'Rent',
     amount: '2000',
-    ledger: 'facility-1-monthly',
+    ledger: 'facility-1-recurring',
   }, {
     guid: '10',
     description: 'Meals',
     amount: '1500',
-    ledger: 'facility-1-monthly',
+    ledger: 'facility-1-recurring',
   }, {
     guid: '11',
     description: 'Initial Deposit',
@@ -65,12 +65,12 @@ EccapCalc.LedgerEntry.FIXTURES = [{
     guid: '12',
     description: 'Rent',
     amount: '2500',
-    ledger: 'facility-2-monthly',
+    ledger: 'facility-2-recurring',
   }, {
     guid: '13',
     description: 'Meals',
     amount: '1800',
-    ledger: 'facility-2-monthly',
+    ledger: 'facility-2-recurring',
   },
 
 ];

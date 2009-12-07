@@ -25,7 +25,7 @@ EccapCalc.FacilityPage.FIXTURES = [{
     guid: 'facility-2',
     title: 'Facility 2',
     account: 'account-1',
-    initialCostsLedger: 'facility-1-initial',
-    recurringCostsLedger: 'facility-1-recurring',
+    initialCostsLedger: 'facility-2-initial',
+    recurringCostsLedger: 'facility-2-recurring',
   },
 ];
