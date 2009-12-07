@@ -20,9 +20,7 @@ EccapCalc.pageController = SC.ObjectController.create(
   }.property('page').cacheable(),
 
   showPersonalPage: function() {
-    // TODO - get this from account
-    this.page = EccapCalc.store.find(EccapCalc.PersonalPage, 'personal'); 
-
+    this.page = EccapCalc.account.get('personal_page');
     EccapCalc.pageController.set('content', this.page);
     this.set('nowShowing', 'personalPage');
   },
