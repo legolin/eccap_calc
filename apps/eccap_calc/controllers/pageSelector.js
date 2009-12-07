@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   EccapCalc.facilitiesViewController
+// Project:   EccapCalc.pageSelectorController
 // Copyright: ©2009 My Company, Inc.
 // ==========================================================================
 /*globals EccapCalc */
@@ -11,8 +11,8 @@
 
   @extends SC.ArrayController
 */
-EccapCalc.facilitiesViewController = SC.ArrayController.create(
-/** @scope EccapCalc.facilitiesViewController.prototype */ {
+EccapCalc.pageSelectorController = SC.ArrayController.create(
+/** @scope EccapCalc.pageSelectorController.prototype */ {
 
   allowsMultipleSelection: NO,
 

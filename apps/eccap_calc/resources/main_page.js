@@ -32,11 +32,11 @@ EccapCalc.mainPage = SC.Page.design({
 
     facilitiesView: SC.ListView.design({
       layout: { left: 20, width: 140, top: 150, height: 0 },
-      contentBinding: 'EccapCalc.facilitiesViewController.arrangedObjects',
-      selectionBinding: 'EccapCalc.facilitiesViewController.selection',
+      contentBinding: 'EccapCalc.pageSelectorController.arrangedObjects',
+      selectionBinding: 'EccapCalc.pageSelectorController.selection',
       contentValueKey: 'title',
       //exampleView: SC.ButtonView,
-      target: 'EccapCalc.facilitiesViewController', 
+      target: 'EccapCalc.pageSelectorController', 
       action: 'showFacilityPage',
       actOnSelect: YES,
       canEditContent: NO,
