@@ -8,7 +8,7 @@
     @param view String, path to view
     @param ledger String, guid of ledger
 */
-EccapCalc.ledgerController = function(view) {
+EccapCalc.ledgerController = function(path_to_view) {
 
   /** @class
       @extends SC.ArrayController
@@ -19,6 +19,7 @@ EccapCalc.ledgerController = function(view) {
     /** @scope EccapCalc.ledgerController.prototype */ {
     verticalOffset: 0,
     page: null,
+    ledger: null,
 
     total: function() {
       return this.reduce(this.reduce_total, 0);
@@ -32,8 +33,7 @@ EccapCalc.ledgerController = function(view) {
       // create new LedgerEntry and add it to the list
       var that = this;
       var ledger_entry = EccapCalc.store.createRecord(EccapCalc.LedgerEntry, {
-        //ledger: ledger_id,
-        ledger: that.ledger().get('id'),
+        ledger: that.ledger,
       });
 
       // select new LedgerEntry in UI
@@ -42,8 +42,8 @@ EccapCalc.ledgerController = function(view) {
       // activate inline editor once UI can repaint
       this.invokeLater(function() {
         var contentIndex = this.indexOf(ledger_entry);
-        var list = EccapCalc.mainPage.getPath(view + '.description.contentView');
-        var listItem = list.itemViewForContentIndex(contentIndex);
+        var view = EccapCalc.mainPage.getPath(path_to_view + '.description.contentView');
+        var listItem = view.itemViewForContentIndex(contentIndex);
         listItem.beginEditing();
       });
       return YES ;
@@ -66,10 +66,20 @@ EccapCalc.ledgerController = function(view) {
 };
 
 // Controllers for personal page
-EccapCalc.assetsLedgerController = EccapCalc.ledgerController('mainPane.assetsView');
-EccapCalc.incomeLedgerController = EccapCalc.ledgerController('mainPane.incomeView');
-EccapCalc.expensesLedgerController = EccapCalc.ledgerController('mainPane.expensesView');
+EccapCalc.assetsLedgerController = EccapCalc.ledgerController(
+  'personalPage.scrollView.contentView.assetsView'
+);
+EccapCalc.incomeLedgerController = EccapCalc.ledgerController(
+  'personalPage.scrollView.contentView.incomeView'
+);
+EccapCalc.expensesLedgerController = EccapCalc.ledgerController(
+  'personalPage.scrollView.contentView.expensesView'
+);
 
 // Controllers for facility page
-EccapCalc.initialFacilityCostsController = EccapCalc.ledgerController('mainPane.ledger1');
-EccapCalc.recurringFacilityCostsController = EccapCalc.ledgerController('mainPane.ledger2');
+EccapCalc.initialFacilityCostsController = EccapCalc.ledgerController(
+  'facilityPage.scrollView.contentView.ledger1'
+);
+EccapCalc.recurringFacilityCostsController = EccapCalc.ledgerController(
+  'facilityPage.scrollView.contentView.ledger2'
+);

@@ -20,8 +20,21 @@ EccapCalc.pageController = SC.ObjectController.create(
   }.property('page').cacheable(),
 
   showPersonalPage: function() {
-    this.page = EccapCalc.account.get('personal_page');
-    EccapCalc.pageController.set('content', this.page);
+    var page = EccapCalc.account.get('personal_page');
+
+    var assetsLedger = page.get('assetsLedger');
+    var incomeLedger = page.get('incomeLedger');
+    var expensesLedger = page.get('expensesLedger');
+
+    EccapCalc.assetsLedgerController.set('ledger', assetsLedger);
+    EccapCalc.incomeLedgerController.set('ledger', incomeLedger);
+    EccapCalc.expensesLedgerController.set('ledger', expensesLedger);
+
+    EccapCalc.assetsLedgerController.set('content', assetsLedger.get('entries'));
+    EccapCalc.incomeLedgerController.set('content', incomeLedger.get('entries'));
+    EccapCalc.expensesLedgerController.set('content', expensesLedger.get('entries'));
+
+    this.page = page;
     this.set('nowShowing', 'personalPage');
   },
-}) ;
+});

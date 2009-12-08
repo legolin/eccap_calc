@@ -29,15 +29,6 @@ EccapCalc = SC.Application.create(
 
     EccapCalc.account = account;
     EccapCalc.pageSelectorController.set('content', account.get('facility_pages'));
-
-    var personal_page = account.get('personal_page');
-    var assets = account.getPath('personal_page.assetsLedger.entries');
-    EccapCalc.assetsLedgerController.set('content', assets);
-
-    var income = account.getPath('personal_page.incomeLedger.entries');
-    EccapCalc.incomeLedgerController.set('content', income);
-
-    var expenses = account.getPath('personal_page.expensesLedger.entries');
-    EccapCalc.expensesLedgerController.set('content', expenses);
+    EccapCalc.pageController.showPersonalPage();
   },
 });

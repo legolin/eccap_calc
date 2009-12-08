@@ -22,7 +22,6 @@ EccapCalc.main = function main() {
   // Step 2. Set the content property on your primary controller.
   // This will make your app come alive!
   EccapCalc.load_account('account-1');
-  EccapCalc.pageController.showPersonalPage();
 };
 
 function main() { EccapCalc.main(); }

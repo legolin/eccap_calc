@@ -44,44 +44,42 @@ EccapCalc.mainPage = SC.Page.design({
     }),
   }),
   personalPage: SC.View.design({
-    childViews: [
-      SC.ScrollView.design({
-        contentView: SC.View.design({
-          childViews: 'labelView assetsView incomeView expensesView'.w(),
+    childViews: 'scrollView'.w(),
+    scrollView: SC.ScrollView.design({
+      contentView: SC.View.design({
+        childViews: 'labelView assetsView incomeView expensesView'.w(),
 
-          labelView: SC.LabelView.design({
-            layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS, top: 0, height: 50},
-            displayValue: 'Personal',
-            //fontWeight: SC.BOLD_WEIGHT,
-            tagName: 'h1',
-          }),
-          assetsView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 100,
-                        'EccapCalc.assetsLedgerController', 'Liquid Assets'),
-          incomeView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 350, 
-                        'EccapCalc.incomeLedgerController', 'Monthly Income'),
-          expensesView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 600, 
-                        'EccapCalc.expensesLedgerController', 'Monthly Expenses'),
+        labelView: SC.LabelView.design({
+          layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS, top: 0, height: 50},
+          displayValue: 'Personal',
+          //fontWeight: SC.BOLD_WEIGHT,
+          tagName: 'h1',
         }),
+        assetsView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 100,
+                      'EccapCalc.assetsLedgerController', 'Liquid Assets'),
+        incomeView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 350, 
+                      'EccapCalc.incomeLedgerController', 'Monthly Income'),
+        expensesView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 600, 
+                      'EccapCalc.expensesLedgerController', 'Monthly Expenses'),
       }),
-    ]
+    }),
   }),
   facilityPage: SC.View.design({
-    childViews: [
-      SC.ScrollView.design({
-        contentView: SC.View.design({
-          childViews: 'labelView ledger1 ledger2'.w(),
-          labelView: SC.LabelView.design({
-            layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS, top: 0, height: 50},
-            valueBinding: 'EccapCalc.pageController.title',
-            //fontWeight: SC.BOLD_WEIGHT,
-            tagName: 'h1',
-          }),
-          ledger1: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 100, 
-                    'EccapCalc.initialFacilityCostsController', 'Initial Costs'),
-          ledger2: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 350, 
-                    'EccapCalc.recurringFacilityCostsController', 'Monthly Costs'),
+    childViews: 'scrollView'.w(),
+    scrollView: SC.ScrollView.design({
+      contentView: SC.View.design({
+        childViews: 'labelView ledger1 ledger2'.w(),
+        labelView: SC.LabelView.design({
+          layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS, top: 0, height: 50},
+          valueBinding: 'EccapCalc.pageController.title',
+          //fontWeight: SC.BOLD_WEIGHT,
+          tagName: 'h1',
         }),
+        ledger1: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 100, 
+                  'EccapCalc.initialFacilityCostsController', 'Initial Costs'),
+        ledger2: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 350, 
+                  'EccapCalc.recurringFacilityCostsController', 'Monthly Costs'),
       }),
-    ],
+    }),
   }),
 });

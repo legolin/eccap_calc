@@ -15,10 +15,6 @@
 EccapCalc.Ledger_ = SC.Record.extend(
   /** @scope EccapCalc.Ledger.prototype */ {
 
-  title: SC.Record.attr(SC.T_STRING, {
-    defaultValue: 'Title',
-    isRequired: YES,
-  }),
   recurring: SC.Record.attr(SC.T_BOOLEAN, {
     defaultValue: YES,
     isRequired: YES,
