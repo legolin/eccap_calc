@@ -36,7 +36,7 @@ EccapCalc.ledgerController = function(path_to_view) {
       // create new LedgerEntry and add it to the list
       var that = this;
       var ledger_entry = EccapCalc.store.createRecord(EccapCalc.LedgerEntry, {
-        ledger: that.ledger,
+        ledger: that.ledger.get('id'), // value must be guid, not object itself!
       });
 
       // select new LedgerEntry in UI
