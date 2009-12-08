@@ -36,7 +36,7 @@ EccapCalc.mainPage = SC.Page.design({
       selectionBinding: 'EccapCalc.pageSelectorController.selection',
       contentValueKey: 'title',
       //exampleView: SC.ButtonView,
-      target: 'EccapCalc.pageSelectorController', 
+      target: 'EccapCalc.pageController', 
       action: 'showFacilityPage',
       actOnSelect: YES,
       canEditContent: NO,

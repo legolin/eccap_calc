@@ -15,18 +15,4 @@ EccapCalc.pageSelectorController = SC.ArrayController.create(
 /** @scope EccapCalc.pageSelectorController.prototype */ {
 
   allowsMultipleSelection: NO,
-
-  showFacilityPage: function() {
-    var page = this.selection().firstObject();
-
-    EccapCalc.initialFacilityCostsController.set('ledger_id', 'initialCostsLedger');
-    EccapCalc.initialFacilityCostsController.set('content', page.getPath('initialCostsLedger.entries'));
-
-    EccapCalc.recurringFacilityCostsController.set('ledger_id', 'recurringCostsLedger');
-    EccapCalc.recurringFacilityCostsController.set('content', page.getPath('recurringCostsLedger.entries'));
-
-    EccapCalc.pageController.set('title', page.get('title'));
-    EccapCalc.pageController.set('page', page);
-    EccapCalc.pageController.set('nowShowing', 'facilityPage');
-  },
 }) ;

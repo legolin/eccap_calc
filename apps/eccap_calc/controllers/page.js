@@ -12,29 +12,33 @@
 */
 EccapCalc.pageController = SC.ObjectController.create(
 /** @scope EccapCalc.pageController.prototype */ {
-  nowShowing: 'personalPage',
-  page: null,
+  account: null,
+  nowShowing: null,
 
-  title: function() {
-    return this.page.get('title');
-  }.property('page').cacheable(),
+  content: function() {
+    switch (this.nowShowing) {
+      case 'personalPage':
+        return this.account.get('personal_page');
+      case 'facilityPage':
+        return EccapCalc.pageSelectorController.selection().firstObject();
+    };
+  }.property('account', 'nowShowing').cacheable(),
 
   showPersonalPage: function() {
-    var page = EccapCalc.account.get('personal_page');
-
-    var assetsLedger = page.get('assetsLedger');
-    var incomeLedger = page.get('incomeLedger');
-    var expensesLedger = page.get('expensesLedger');
-
-    EccapCalc.assetsLedgerController.set('ledger', assetsLedger);
-    EccapCalc.incomeLedgerController.set('ledger', incomeLedger);
-    EccapCalc.expensesLedgerController.set('ledger', expensesLedger);
-
-    EccapCalc.assetsLedgerController.set('content', assetsLedger.get('entries'));
-    EccapCalc.incomeLedgerController.set('content', incomeLedger.get('entries'));
-    EccapCalc.expensesLedgerController.set('content', expensesLedger.get('entries'));
-
-    this.page = page;
     this.set('nowShowing', 'personalPage');
+    EccapCalc.pageSelectorController.set('selection', null);
   },
+
+  showFacilityPage: function() {
+    this.set('nowShowing', 'facilityPage');
+    this.notifyPropertyChange('content'); // Facility selection may have changed.
+
+    EccapCalc.initialFacilityCostsController.set(
+      'ledger', this.getPath('content.initialCostsLedger'));
+    EccapCalc.recurringFacilityCostsController.set(
+      'ledger', this.getPath('content.recurringCostsLedger'));
+
+    EccapCalc.initialFacilityCostsController.updateSelectionAfterContentChange();
+    EccapCalc.recurringFacilityCostsController.updateSelectionAfterContentChange();
+  }
 });

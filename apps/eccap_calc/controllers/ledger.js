@@ -18,8 +18,11 @@ EccapCalc.ledgerController = function(path_to_view) {
 
     /** @scope EccapCalc.ledgerController.prototype */ {
     verticalOffset: 0,
-    page: null,
     ledger: null,
+
+    content: function() {
+      return this.ledger ? this.ledger.get('entries') : [];
+    }.property('ledger').cacheable(),
 
     total: function() {
       return this.reduce(this.reduce_total, 0);
@@ -60,7 +63,7 @@ EccapCalc.ledgerController = function(path_to_view) {
       var selIndex = indexes.get('min')-1;
       if (selIndex<0) selIndex = 0 ;
       this.selectObject(this.objectAt(selIndex));
-      return YES ;
+      return YES;
     },
   });
 };
