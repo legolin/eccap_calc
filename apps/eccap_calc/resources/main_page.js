@@ -56,8 +56,7 @@ EccapCalc.mainPage = SC.Page.design({
         labelView: SC.LabelView.design({
           layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS, top: 0, height: 50},
           displayValue: 'Personal',
-          //fontWeight: SC.BOLD_WEIGHT,
-          tagName: 'h1',
+          controlSize: SC.HUGE_CONTROL_SIZE,
         }),
         assetsView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 100,
                       'EccapCalc.assetsLedgerController', 'Liquid Assets'),
@@ -76,8 +75,7 @@ EccapCalc.mainPage = SC.Page.design({
         labelView: SC.LabelView.design({
           layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS, top: 0, height: 50},
           valueBinding: 'EccapCalc.pageController.title',
-          //fontWeight: SC.BOLD_WEIGHT,
-          tagName: 'h1',
+          controlSize: SC.HUGE_CONTROL_SIZE,
         }),
         ledger1: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 100, 
                   'EccapCalc.initialOptionCostsController', 'Initial Costs'),
