@@ -79,10 +79,10 @@ EccapCalc.expensesLedgerController = EccapCalc.ledgerController(
   'personalPage.scrollView.contentView.expensesView'
 );
 
-// Controllers for facility page
-EccapCalc.initialFacilityCostsController = EccapCalc.ledgerController(
-  'facilityPage.scrollView.contentView.ledger1'
+// Controllers for option page
+EccapCalc.initialOptionCostsController = EccapCalc.ledgerController(
+  'optionPage.scrollView.contentView.ledger1'
 );
-EccapCalc.recurringFacilityCostsController = EccapCalc.ledgerController(
-  'facilityPage.scrollView.contentView.ledger2'
+EccapCalc.recurringOptionCostsController = EccapCalc.ledgerController(
+  'optionPage.scrollView.contentView.ledger2'
 );

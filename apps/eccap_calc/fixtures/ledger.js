@@ -22,24 +22,24 @@ EccapCalc.Ledger.FIXTURES = [{
     credit: NO,
     page: 'personal'
   }, {
-    guid: 'facility-1-initial',
+    guid: 'option-1-initial',
     recurring: NO,
     credit: NO,
-    page: 'facility-1'
+    page: 'option-1'
   }, {
-    guid: 'facility-1-recurring',
+    guid: 'option-1-recurring',
     recurring: YES,
     credit: NO,
-    page: 'facility-1'
+    page: 'option-1'
   }, {
-    guid: 'facility-2-initial',
+    guid: 'option-2-initial',
     recurring: NO,
     credit: NO,
-    page: 'facility-2'
+    page: 'option-2'
   }, {
-    guid: 'facility-2-recurring',
+    guid: 'option-2-recurring',
     recurring: YES,
     credit: NO,
-    page: 'facility-2'
+    page: 'option-2'
   }, 
 ];

@@ -30,7 +30,7 @@ EccapCalc.Account_ = SC.Record.extend(
     inverse: 'account',
     isMaster: YES,
   }),
-  facility_pages: SC.Record.toMany('EccapCalc.FacilityPage', {
+  option_pages: SC.Record.toMany('EccapCalc.OptionPage', {
     inverse: 'account',
     isMaster: YES,
   }),
@@ -38,8 +38,8 @@ EccapCalc.Account_ = SC.Record.extend(
 
 EccapCalc.Account = EccapCalc.store.dataSource.instanceOf(SC.FixturesDataSource)
   ? EccapCalc.Account_.extend({
-    facility_pages: function() {
-      var q = SC.Query.local(EccapCalc.FacilityPage, {
+    option_pages: function() {
+      var q = SC.Query.local(EccapCalc.OptionPage, {
         conditions: 'account = {account}', 
         account: this,
       });

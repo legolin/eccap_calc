@@ -6,8 +6,8 @@
 
 /** @class
 
-  Controller for facility pages.
-  Content type is Eccap.FacilityPage.
+  Controller for option pages.
+  Content type is Eccap.OptionPage.
 
   @extends SC.ArrayController
 */

@@ -30,14 +30,14 @@ EccapCalc.PersonalPage = SC.Record.extend({
   }),
 });
 
-EccapCalc.FacilityPage = SC.Record.extend({
+EccapCalc.OptionPage = SC.Record.extend({
   title: SC.Record.attr(SC.T_STRING, {
-    defaultValue: 'Facility',
+    defaultValue: 'Option',
     isEditable: YES,
     isRequired: YES,
   }),
   account: SC.Record.toOne('EccapCalc.Account', {
-    inverse: 'facility_pages',
+    inverse: 'option_pages',
     isMaster: NO,
   }),
   initialCostsLedger: SC.Record.toOne('EccapCalc.Ledger', {

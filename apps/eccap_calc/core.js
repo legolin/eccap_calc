@@ -28,7 +28,7 @@ EccapCalc = SC.Application.create(
     var account = EccapCalc.store.find(EccapCalc.Account, account_id);
 
     EccapCalc.pageController.set('account', account);
-    EccapCalc.pageSelectorController.set('content', account.get('facility_pages'));
+    EccapCalc.pageSelectorController.set('content', account.get('option_pages'));
     EccapCalc.assetsLedgerController.set('ledger',
       account.getPath('personal_page.assetsLedger'));
     EccapCalc.incomeLedgerController.set('ledger',

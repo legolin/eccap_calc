@@ -19,7 +19,7 @@ EccapCalc.pageController = SC.ObjectController.create(
     switch (this.nowShowing) {
       case 'personalPage':
         return this.account.get('personal_page');
-      case 'facilityPage':
+      case 'optionPage':
         return EccapCalc.pageSelectorController.selection().firstObject();
     };
   }.property('account', 'nowShowing').cacheable(),
@@ -29,16 +29,16 @@ EccapCalc.pageController = SC.ObjectController.create(
     EccapCalc.pageSelectorController.set('selection', null);
   },
 
-  showFacilityPage: function() {
-    this.set('nowShowing', 'facilityPage');
-    this.notifyPropertyChange('content'); // Facility selection may have changed.
+  showOptionPage: function() {
+    this.set('nowShowing', 'optionPage');
+    this.notifyPropertyChange('content'); // Option selection may have changed.
 
-    EccapCalc.initialFacilityCostsController.set(
+    EccapCalc.initialOptionCostsController.set(
       'ledger', this.getPath('content.initialCostsLedger'));
-    EccapCalc.recurringFacilityCostsController.set(
+    EccapCalc.recurringOptionCostsController.set(
       'ledger', this.getPath('content.recurringCostsLedger'));
 
-    EccapCalc.initialFacilityCostsController.updateSelectionAfterContentChange();
-    EccapCalc.recurringFacilityCostsController.updateSelectionAfterContentChange();
+    EccapCalc.initialOptionCostsController.updateSelectionAfterContentChange();
+    EccapCalc.recurringOptionCostsController.updateSelectionAfterContentChange();
   }
 });

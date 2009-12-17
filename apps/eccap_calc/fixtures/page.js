@@ -15,17 +15,17 @@ EccapCalc.PersonalPage.FIXTURES = [{
   },
 ];
 
-EccapCalc.FacilityPage.FIXTURES = [{
-    guid: 'facility-1',
-    title: 'Facility 1',
+EccapCalc.OptionPage.FIXTURES = [{
+    guid: 'option-1',
+    title: 'Option 1',
     account: 'account-1',
-    initialCostsLedger: 'facility-1-initial',
-    recurringCostsLedger: 'facility-1-recurring',
+    initialCostsLedger: 'option-1-initial',
+    recurringCostsLedger: 'option-1-recurring',
   }, {
-    guid: 'facility-2',
-    title: 'Facility 2',
+    guid: 'option-2',
+    title: 'Option 2',
     account: 'account-1',
-    initialCostsLedger: 'facility-2-initial',
-    recurringCostsLedger: 'facility-2-recurring',
+    initialCostsLedger: 'option-2-initial',
+    recurringCostsLedger: 'option-2-recurring',
   },
 ];

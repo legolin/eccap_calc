@@ -37,7 +37,7 @@ EccapCalc.mainPage = SC.Page.design({
       contentValueKey: 'title',
       //exampleView: SC.ButtonView,
       target: 'EccapCalc.pageController', 
-      action: 'showFacilityPage',
+      action: 'showOptionPage',
       actOnSelect: YES,
       canEditContent: NO,
       canDeleteContent: NO,
@@ -64,7 +64,7 @@ EccapCalc.mainPage = SC.Page.design({
       }),
     }),
   }),
-  facilityPage: SC.View.design({
+  optionPage: SC.View.design({
     childViews: 'scrollView'.w(),
     scrollView: SC.ScrollView.design({
       contentView: SC.View.design({
@@ -76,9 +76,9 @@ EccapCalc.mainPage = SC.Page.design({
           tagName: 'h1',
         }),
         ledger1: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 100, 
-                  'EccapCalc.initialFacilityCostsController', 'Initial Costs'),
+                  'EccapCalc.initialOptionCostsController', 'Initial Costs'),
         ledger2: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 350, 
-                  'EccapCalc.recurringFacilityCostsController', 'Monthly Costs'),
+                  'EccapCalc.recurringOptionCostsController', 'Monthly Costs'),
       }),
     }),
   }),
