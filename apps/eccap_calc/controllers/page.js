@@ -29,13 +29,11 @@ EccapCalc.pageController = SC.ObjectController.create(
     EccapCalc.pageSelectorController.set('selection', null);
   },
 
-  showOptionPage: function() {
+  showOptionPage: function(p) {
+    var page = EccapCalc.pageSelectorController.selection().firstObject();
+    EccapCalc.initialOptionCostsController.set( 'ledger', page.get('initialCostsLedger'));
+    EccapCalc.recurringOptionCostsController.set( 'ledger', page.get('recurringCostsLedger'));
     this.set('nowShowing', 'optionPage');
     this.notifyPropertyChange('content'); // Option selection may have changed.
-
-    EccapCalc.initialOptionCostsController.set(
-      'ledger', this.getPath('content.initialCostsLedger'));
-    EccapCalc.recurringOptionCostsController.set(
-      'ledger', this.getPath('content.recurringCostsLedger'));
   }
 });

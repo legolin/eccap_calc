@@ -24,7 +24,7 @@ EccapCalc.mainPage = SC.Page.design({
       SC.ButtonView.design({
         layout: { left: 20, top: 150, width: 100, height: 25},
         title: 'New Option',
-        target: EccapCalc.pageSelectorController,
+        target: 'EccapCalc.pageSelectorController',
         action: "add_page"
       }),
       'pageSelector',
@@ -39,12 +39,11 @@ EccapCalc.mainPage = SC.Page.design({
       contentBinding: 'EccapCalc.pageSelectorController.arrangedObjects',
       selectionBinding: 'EccapCalc.pageSelectorController.selection',
       contentValueKey: 'title',
-      //exampleView: SC.ButtonView,
       target: 'EccapCalc.pageController', 
       action: 'showOptionPage',
       actOnSelect: YES,
-      canEditContent: NO,
-      canDeleteContent: NO,
+      canEditContent: YES,
+      canDeleteContent: YES,
     }),
   }),
   personalPage: SC.View.design({
@@ -71,11 +70,17 @@ EccapCalc.mainPage = SC.Page.design({
     childViews: 'scrollView'.w(),
     scrollView: SC.ScrollView.design({
       contentView: SC.View.design({
-        childViews: 'labelView ledger1 ledger2'.w(),
+        childViews: 'labelView deleteButton ledger1 ledger2'.w(),
         labelView: SC.LabelView.design({
           layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS, top: 0, height: 50},
           valueBinding: 'EccapCalc.pageController.title',
           controlSize: SC.HUGE_CONTROL_SIZE,
+        }),
+        deleteButton: SC.ButtonView.design({
+          layout: { right: 0, width: 100, top: 0, height: 24 },
+          title: 'Delete Page',
+          target: 'EccapCalc.pageSelectorController',
+          action: 'delete_page',
         }),
         ledger1: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 100, 
                   'EccapCalc.initialOptionCostsController', 'Initial Costs'),

@@ -13,28 +13,52 @@
 */
 EccapCalc.pageSelectorController = SC.ArrayController.create(
   SC.CollectionViewDelegate,
+  SC.SelectionSupport,
 
   /** @scope EccapCalc.pageSelectorController.prototype */ {
 
-    allowsMultipleSelection: NO,
-    isEditable: YES,
+  allowsMultipleSelection: NO,
 
-    // create new Option and add it to the list
-    add_page: function() {
-      var account = EccapCalc.pageController.get('account');
-      var page = EccapCalc.store.createRecord(EccapCalc.OptionPage, {
-        account: account.get('id'), // value is id for inverse relation 
-        initialCostsLedger: EccapCalc.store.createRecord(EccapCalc.Ledger, {
-          recurring: NO,
-          credit: NO,
-        }),
-        recurringCostsLedger: EccapCalc.store.createRecord(EccapCalc.Ledger, {
-          recurring: YES,
-          credit: NO,
-        }),
-      });
-      this.selectObject(page); 
-      EccapCalc.pageController.showOptionPage();
-      return YES ;
+  // create new Option and add it to the list
+  add_page: function() {
+    var account = EccapCalc.pageController.get('account');
+    var page = EccapCalc.store.createRecord(EccapCalc.OptionPage, {
+      account: account.get('id'), // value is id for inverse relation 
+      initialCostsLedger: EccapCalc.store.createRecord(EccapCalc.Ledger, {
+        recurring: NO,
+        credit: NO,
+      }),
+      recurringCostsLedger: EccapCalc.store.createRecord(EccapCalc.Ledger, {
+        recurring: YES,
+        credit: NO,
+      }),
+    });
+    this.selectObject(page); 
+    this.invokeLater(function() {
+      EccapCalc.pageController.showOptionPage(page);
+    });
+    return YES ;
+  },
+
+  delete_page: function() {
+    var page = EccapCalc.pageController.content();
+
+    if (!SC.instanceOf(page, EccapCalc.OptionPage)) {
+      return NO;
+    }
+    // set the new selection
+    var index = EccapCalc.max(this.indexOf(page) - 1, 0);
+    EccapCalc.store.destroyRecord(null, null, page.storeKey);
+    //this.updateSelectionAfterContentChange();
+
+    this.invokeLater(function() {
+      if (this.length() > 0) {
+        this.selectObject(this.objectAt(index));
+        EccapCalc.pageController.showOptionPage();
+      } else {
+        EccapCalc.pageController.showPersonalPage();
+      }
+    });
+    return YES;
   },
 });

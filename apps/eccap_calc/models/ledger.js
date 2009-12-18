@@ -15,6 +15,8 @@
 EccapCalc.Ledger_ = SC.Record.extend(
   /** @scope EccapCalc.Ledger.prototype */ {
 
+  guid: SC.Record.attr(String),
+
   recurring: SC.Record.attr(SC.T_BOOLEAN, {
     defaultValue: YES,
     isRequired: YES,
@@ -28,7 +30,7 @@ EccapCalc.Ledger_ = SC.Record.extend(
     isMaster: YES,
   }),
   page: SC.Record.toOne('EccapCalc.Page', {
-    inverse: 'ledgers',
+    //inverse: 'ledgers',
     isMaster: NO,
   }),
 }) ;

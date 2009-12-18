@@ -37,4 +37,8 @@ EccapCalc = SC.Application.create(
       account.getPath('personal_page.expensesLedger'));
     EccapCalc.pageController.showPersonalPage();
   },
+
+  max: function(x, y) {
+    return x > y ? x : y;
+  }
 });
