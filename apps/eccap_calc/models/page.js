@@ -32,7 +32,7 @@ EccapCalc.PersonalPage = SC.Record.extend({
 
 EccapCalc.OptionPage = SC.Record.extend({
   title: SC.Record.attr(SC.T_STRING, {
-    defaultValue: 'Option',
+    defaultValue: 'New Option',
     isEditable: YES,
     isRequired: YES,
   }),

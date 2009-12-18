@@ -21,7 +21,12 @@ EccapCalc.mainPage = SC.Page.design({
         target: 'EccapCalc.pageController',
         action: 'showPersonalPage',
       }),
-
+      SC.ButtonView.design({
+        layout: { left: 20, top: 150, width: 100, height: 25},
+        title: 'New Option',
+        target: EccapCalc.pageSelectorController,
+        action: "add_page"
+      }),
       'pageSelector',
 
       SC.ContainerView.design({
@@ -29,9 +34,8 @@ EccapCalc.mainPage = SC.Page.design({
         nowShowingBinding: 'EccapCalc.pageController.nowShowing',
       }),
     ],
-
     pageSelector: SC.ListView.design({
-      layout: { left: 20, width: 140, top: 150, height: 0 },
+      layout: { left: 20, width: 140, top: 175, height: 0 },
       contentBinding: 'EccapCalc.pageSelectorController.arrangedObjects',
       selectionBinding: 'EccapCalc.pageSelectorController.selection',
       contentValueKey: 'title',

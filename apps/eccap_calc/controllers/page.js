@@ -37,8 +37,5 @@ EccapCalc.pageController = SC.ObjectController.create(
       'ledger', this.getPath('content.initialCostsLedger'));
     EccapCalc.recurringOptionCostsController.set(
       'ledger', this.getPath('content.recurringCostsLedger'));
-
-    EccapCalc.initialOptionCostsController.updateSelectionAfterContentChange();
-    EccapCalc.recurringOptionCostsController.updateSelectionAfterContentChange();
   }
 });
