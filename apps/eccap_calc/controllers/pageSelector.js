@@ -22,16 +22,26 @@ EccapCalc.pageSelectorController = SC.ArrayController.create(
   // create new Option and add it to the list
   add_page: function() {
     var account = EccapCalc.pageController.get('account');
+    var ledger1 = EccapCalc.store.createRecord(EccapCalc.Ledger, {
+      recurring: NO,
+      credit: NO,
+      page: SC.Record.toOne('EccapCalc.OptionPage', {
+        inverse: 'initialCostsLedger',
+        isMaster: NO,
+      }),
+    });
+    var ledger2 = EccapCalc.store.createRecord(EccapCalc.Ledger, {
+      recurring: YES,
+      credit: NO,
+      page: SC.Record.toOne('EccapCalc.OptionPage', {
+        inverse: 'RecurringCostsLedger',
+        isMaster: NO,
+      }),
+    });
     var page = EccapCalc.store.createRecord(EccapCalc.OptionPage, {
       account: account.get('id'), // value is id for inverse relation 
-      initialCostsLedger: EccapCalc.store.createRecord(EccapCalc.Ledger, {
-        recurring: NO,
-        credit: NO,
-      }),
-      recurringCostsLedger: EccapCalc.store.createRecord(EccapCalc.Ledger, {
-        recurring: YES,
-        credit: NO,
-      }),
+      initialCostsLedger: ledger1,
+      recurringCostsLedger: ledger2,
     });
     this.selectObject(page); 
     this.invokeLater(function() {

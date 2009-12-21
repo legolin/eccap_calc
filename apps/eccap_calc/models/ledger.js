@@ -29,10 +29,6 @@ EccapCalc.Ledger_ = SC.Record.extend(
     inverse: 'ledger',
     isMaster: YES,
   }),
-  page: SC.Record.toOne('EccapCalc.Page', {
-    //inverse: 'ledgers',
-    isMaster: NO,
-  }),
 }) ;
 
 EccapCalc.Ledger = EccapCalc.store.dataSource.instanceOf(SC.FixturesDataSource)
