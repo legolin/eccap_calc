@@ -59,7 +59,7 @@ EccapCalc.pageSelectorController = SC.ArrayController.create(
     // set the new selection
     var index = EccapCalc.max(this.indexOf(page) - 1, 0);
     EccapCalc.store.destroyRecord(null, null, page.storeKey);
-    //this.updateSelectionAfterContentChange();
+    this.updateSelectionAfterContentChange(); // keep this!!
 
     this.invokeLater(function() {
       if (this.length() > 0) {
