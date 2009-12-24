@@ -29,6 +29,14 @@ EccapCalc.Ledger_ = SC.Record.extend(
     inverse: 'ledger',
     isMaster: YES,
   }),
+
+  total: function() {
+    return this.get('entries').reduce(this.total_callback, 0);
+  }.property('entries[]'),
+
+  total_callback: function(prev, item, index, enumerable) {
+    return Number(prev) + Number(item.get('amount'));
+  },
 }) ;
 
 EccapCalc.Ledger = EccapCalc.store.dataSource.instanceOf(SC.FixturesDataSource)
