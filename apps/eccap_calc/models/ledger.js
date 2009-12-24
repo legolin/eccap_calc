@@ -32,7 +32,8 @@ EccapCalc.Ledger_ = SC.Record.extend(
 
   total: function() {
     return this.get('entries').reduce(this.total_callback, 0);
-  }.property('entries[]'),
+  //}.property('*entries.[]').cacheable(),
+  }.property(),
 
   total_callback: function(prev, item, index, enumerable) {
     return Number(prev) + Number(item.get('amount'));
@@ -47,6 +48,6 @@ EccapCalc.Ledger = EccapCalc.store.dataSource.instanceOf(SC.FixturesDataSource)
         ledger: this,
       });
       return this.get('store').find(q);
-     }.property().cacheable() 
+     }.property()
   })
   : EccapCalc.Ledger_.extend();

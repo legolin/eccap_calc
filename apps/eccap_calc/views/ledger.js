@@ -80,7 +80,6 @@ EccapCalc.LedgerView = function(x, y, arrayController, title) {
 
     total: SC.LabelView.design({
       layout: { left: x_total, top: y_total, width: w_amount, height: h_title},
-      //valueBinding: arrayController + '.total',
       valueBinding: arrayController + '*ledger.total',
       textAlign: SC.ALIGN_RIGHT,
     }),
