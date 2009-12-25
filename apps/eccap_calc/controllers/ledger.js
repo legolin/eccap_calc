@@ -24,6 +24,14 @@ EccapCalc.ledgerController = function(path_to_view) {
       return this.ledger ? this.ledger.get('entries') : [];
     }.property('ledger').cacheable(),
 
+    total: function() {
+      return this.reduce(this.reduce_total, 0);
+    }.property('[]').cacheable(),
+
+    reduce_total: function(_total, ledger_entry, index, enm) {
+      return Number(_total) + Number(ledger_entry.get('amount'));
+    },
+
     add_item: function() {
       // create new LedgerEntry and add it to the list
       var that = this;
