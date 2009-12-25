@@ -17,14 +17,6 @@ EccapCalc.Ledger_ = SC.Record.extend(
 
   guid: SC.Record.attr(String),
 
-  recurring: SC.Record.attr(SC.T_BOOLEAN, {
-    defaultValue: YES,
-    isRequired: YES,
-  }),
-  credit: SC.Record.attr(SC.T_BOOLEAN, {
-    defaultValue: NO,
-    isRequired: YES,
-  }),
   entries: SC.Record.toMany('EccapCalc.LedgerEntry', {
     inverse: 'ledger',
     isMaster: YES,

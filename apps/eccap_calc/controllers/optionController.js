@@ -23,16 +23,12 @@ EccapCalc.optionController = SC.ArrayController.create(
   add_option: function() {
     var account = EccapCalc.currentViewController.get('account');
     var ledger1 = EccapCalc.store.createRecord(EccapCalc.Ledger, {
-      recurring: NO,
-      credit: NO,
       page: SC.Record.toOne('EccapCalc.Option', {
         inverse: 'initialCostsLedger',
         isMaster: NO,
       }),
     });
     var ledger2 = EccapCalc.store.createRecord(EccapCalc.Ledger, {
-      recurring: YES,
-      credit: NO,
       page: SC.Record.toOne('EccapCalc.Option', {
         inverse: 'RecurringCostsLedger',
         isMaster: NO,
