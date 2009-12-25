@@ -27,15 +27,15 @@ EccapCalc = SC.Application.create(
   load_account: function(account_id) {
     var account = EccapCalc.store.find(EccapCalc.Account, account_id);
 
-    EccapCalc.pageController.set('account', account);
-    EccapCalc.optionController.set('content', account.get('option_pages'));
+    EccapCalc.currentViewController.set('account', account);
+    EccapCalc.optionController.set('content', account.get('options'));
     EccapCalc.assetsLedgerController.set('ledger',
       account.getPath('personal_page.assetsLedger'));
     EccapCalc.incomeLedgerController.set('ledger',
       account.getPath('personal_page.incomeLedger'));
     EccapCalc.expensesLedgerController.set('ledger',
       account.getPath('personal_page.expensesLedger'));
-    EccapCalc.pageController.showPersonalPage();
+    EccapCalc.currentViewController.showPersonal();
   },
 
   max: function(x, y) {

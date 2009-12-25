@@ -4,18 +4,9 @@
 // ==========================================================================
 /*globals EccapCalc */
 
-sc_require('models/page');
+sc_require('models/option');
 
-EccapCalc.PersonalPage.FIXTURES = [{
-    guid: 'personal',
-    account: 'account-1',
-    assetsLedger: 'assets',
-    incomeLedger: 'income',
-    expensesLedger: 'expenses',
-  },
-];
-
-EccapCalc.OptionPage.FIXTURES = [{
+EccapCalc.Option.FIXTURES = [{
     guid: 'option-1',
     title: 'Option 1',
     account: 'account-1',

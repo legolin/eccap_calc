@@ -7,7 +7,7 @@
 /** @class
 
   Controller for option pages.
-  Content type is Eccap.OptionPage.
+  Content type is Eccap.Option.
 
   @extends SC.ArrayController
 */
@@ -20,12 +20,12 @@ EccapCalc.optionController = SC.ArrayController.create(
   allowsMultipleSelection: NO,
 
   // create new Option and add it to the list
-  add_page: function() {
-    var account = EccapCalc.pageController.get('account');
+  add_option: function() {
+    var account = EccapCalc.currentViewController.get('account');
     var ledger1 = EccapCalc.store.createRecord(EccapCalc.Ledger, {
       recurring: NO,
       credit: NO,
-      page: SC.Record.toOne('EccapCalc.OptionPage', {
+      page: SC.Record.toOne('EccapCalc.Option', {
         inverse: 'initialCostsLedger',
         isMaster: NO,
       }),
@@ -33,27 +33,27 @@ EccapCalc.optionController = SC.ArrayController.create(
     var ledger2 = EccapCalc.store.createRecord(EccapCalc.Ledger, {
       recurring: YES,
       credit: NO,
-      page: SC.Record.toOne('EccapCalc.OptionPage', {
+      page: SC.Record.toOne('EccapCalc.Option', {
         inverse: 'RecurringCostsLedger',
         isMaster: NO,
       }),
     });
-    var page = EccapCalc.store.createRecord(EccapCalc.OptionPage, {
+    var page = EccapCalc.store.createRecord(EccapCalc.Option, {
       account: account.get('id'), // value is id for inverse relation 
       initialCostsLedger: ledger1,
       recurringCostsLedger: ledger2,
     });
     this.selectObject(page); 
     this.invokeLater(function() {
-      EccapCalc.pageController.showOptionPage(page);
+      EccapCalc.currentViewController.showOption(page);
     });
     return YES ;
   },
 
-  delete_page: function() {
-    var page = EccapCalc.pageController.content();
+  delete_option: function() {
+    var page = EccapCalc.currentViewController.content();
 
-    if (!SC.instanceOf(page, EccapCalc.OptionPage)) {
+    if (!SC.instanceOf(page, EccapCalc.Option)) {
       return NO;
     }
     // set the new selection
@@ -64,9 +64,9 @@ EccapCalc.optionController = SC.ArrayController.create(
     this.invokeLater(function() {
       if (this.length() > 0) {
         this.selectObject(this.objectAt(index));
-        EccapCalc.pageController.showOptionPage();
+        EccapCalc.currentViewController.showOption();
       } else {
-        EccapCalc.pageController.showPersonalPage();
+        EccapCalc.currentViewController.showPersonal();
       }
     });
     return YES;

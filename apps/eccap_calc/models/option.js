@@ -11,33 +11,14 @@
   @extends SC.Record
   @version 0.1
 */
-EccapCalc.PersonalPage = SC.Record.extend({
-  account: SC.Record.toOne('EccapCalc.Account', {
-    inverse: 'personal_page',
-    isMaster: NO,
-  }),
-  assetsLedger: SC.Record.toOne('EccapCalc.Ledger', {
-    inverse: 'page',
-    isMaster: YES,
-  }),
-  incomeLedger: SC.Record.toOne('EccapCalc.Ledger', {
-    inverse: 'page',
-    isMaster: YES,
-  }),
-  expensesLedger: SC.Record.toOne('EccapCalc.Ledger', {
-    inverse: 'page',
-    isMaster: YES,
-  }),
-});
-
-EccapCalc.OptionPage = SC.Record.extend({
+EccapCalc.Option = SC.Record.extend({
   title: SC.Record.attr(SC.T_STRING, {
     defaultValue: 'New Option',
     isEditable: YES,
     isRequired: YES,
   }),
   account: SC.Record.toOne('EccapCalc.Account', {
-    inverse: 'option_pages',
+    inverse: 'options',
     isMaster: NO,
   }),
   initialCostsLedger: SC.Record.toOne('EccapCalc.Ledger', {

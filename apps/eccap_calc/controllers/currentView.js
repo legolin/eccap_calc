@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   EccapCalc.pageController
+// Project:   EccapCalc.currentViewController
 // Copyright: ©2009 My Company, Inc.
 // ==========================================================================
 /*globals EccapCalc */
@@ -10,8 +10,8 @@
 
   @extends SC.Object
 */
-EccapCalc.pageController = SC.ObjectController.create(
-/** @scope EccapCalc.pageController.prototype */ {
+EccapCalc.currentViewController = SC.ObjectController.create(
+/** @scope EccapCalc.currentViewController.prototype */ {
   account: null,
   nowShowing: null,
 
@@ -24,12 +24,12 @@ EccapCalc.pageController = SC.ObjectController.create(
     };
   }.property('account', 'nowShowing').cacheable(),
 
-  showPersonalPage: function() {
+  showPersonal: function() {
     this.set('nowShowing', 'personalPage');
     EccapCalc.optionController.set('selection', null);
   },
 
-  showOptionPage: function(p) {
+  showOption: function(p) {
     var page = EccapCalc.optionController.selection().firstObject();
     EccapCalc.initialOptionCostsController.set( 'ledger', page.get('initialCostsLedger'));
     EccapCalc.recurringOptionCostsController.set( 'ledger', page.get('recurringCostsLedger'));
