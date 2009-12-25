@@ -34,6 +34,18 @@ EccapCalc.Account_ = SC.Record.extend(
     inverse: 'account',
     isMaster: YES,
   }),
+  assetsLedger: SC.Record.toOne('EccapCalc.Ledger', {
+    inverse: 'account',
+    isMaster: YES,
+  }),
+  incomeLedger: SC.Record.toOne('EccapCalc.Ledger', {
+    inverse: 'account',
+    isMaster: YES,
+  }),
+  expensesLedger: SC.Record.toOne('EccapCalc.Ledger', {
+    inverse: 'account',
+    isMaster: YES,
+  }),
 }) ;
 
 EccapCalc.Account = EccapCalc.store.dataSource.instanceOf(SC.FixturesDataSource)

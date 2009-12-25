@@ -8,13 +8,13 @@ sc_require('models/ledger');
 
 EccapCalc.Ledger.FIXTURES = [{
     guid: 'assets',
-    page: 'personal'
+    account: 'account-1'
   }, {
     guid: 'income',
-    page: 'personal'
+    account: 'account-1'
   }, {
     guid: 'expenses',
-    page: 'personal'
+    account: 'account-1'
   }, {
     guid: 'option-1-initial',
     page: 'option-1'

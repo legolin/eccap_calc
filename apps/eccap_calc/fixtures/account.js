@@ -12,5 +12,8 @@ EccapCalc.Account.FIXTURES = [{
     email: 'foo@bar.com',
     zipcode: '12345',
     personal_page: 'personal',
+    assetsLedger: 'assets',
+    incomeLedger: 'income',
+    expensesLedger: 'expenses',
   }
 ];

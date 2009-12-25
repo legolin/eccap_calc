@@ -29,12 +29,9 @@ EccapCalc = SC.Application.create(
 
     EccapCalc.currentViewController.set('account', account);
     EccapCalc.optionController.set('content', account.get('options'));
-    EccapCalc.assetsLedgerController.set('ledger',
-      account.getPath('personal_page.assetsLedger'));
-    EccapCalc.incomeLedgerController.set('ledger',
-      account.getPath('personal_page.incomeLedger'));
-    EccapCalc.expensesLedgerController.set('ledger',
-      account.getPath('personal_page.expensesLedger'));
+    EccapCalc.assetsLedgerController.set('ledger', account.get('assetsLedger'));
+    EccapCalc.incomeLedgerController.set('ledger', account.get('incomeLedger'));
+    EccapCalc.expensesLedgerController.set('ledger', account.get('expensesLedger'));
     EccapCalc.currentViewController.showPersonal();
   },
 
