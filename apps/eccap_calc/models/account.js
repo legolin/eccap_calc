@@ -46,6 +46,8 @@ EccapCalc.Account_ = SC.Record.extend(
     inverse: 'account',
     isMaster: YES,
   }),
+  ror: SC.Record.attr(SC.T_NUMBER), // rate of return on investments, as a percentage, 0..100
+  inflation: SC.Record.attr(SC.T_NUMBER),// 0..100
 }) ;
 
 EccapCalc.Account = EccapCalc.store.dataSource.instanceOf(SC.FixturesDataSource)

@@ -15,5 +15,7 @@ EccapCalc.Account.FIXTURES = [{
     assetsLedger: 'assets',
     incomeLedger: 'income',
     expensesLedger: 'expenses',
+    ror: '5',
+    inflation: '3',
   }
 ];
