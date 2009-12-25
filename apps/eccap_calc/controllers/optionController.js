@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   EccapCalc.pageSelectorController
+// Project:   EccapCalc.optionController
 // Copyright: ©2009 My Company, Inc.
 // ==========================================================================
 /*globals EccapCalc */
@@ -11,11 +11,11 @@
 
   @extends SC.ArrayController
 */
-EccapCalc.pageSelectorController = SC.ArrayController.create(
+EccapCalc.optionController = SC.ArrayController.create(
   SC.CollectionViewDelegate,
   SC.SelectionSupport,
 
-  /** @scope EccapCalc.pageSelectorController.prototype */ {
+  /** @scope EccapCalc.optionController.prototype */ {
 
   allowsMultipleSelection: NO,
 

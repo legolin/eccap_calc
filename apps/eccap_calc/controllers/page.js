@@ -20,17 +20,17 @@ EccapCalc.pageController = SC.ObjectController.create(
       case 'personalPage':
         return this.account.get('personal_page');
       case 'optionPage':
-        return EccapCalc.pageSelectorController.selection().firstObject();
+        return EccapCalc.optionController.selection().firstObject();
     };
   }.property('account', 'nowShowing').cacheable(),
 
   showPersonalPage: function() {
     this.set('nowShowing', 'personalPage');
-    EccapCalc.pageSelectorController.set('selection', null);
+    EccapCalc.optionController.set('selection', null);
   },
 
   showOptionPage: function(p) {
-    var page = EccapCalc.pageSelectorController.selection().firstObject();
+    var page = EccapCalc.optionController.selection().firstObject();
     EccapCalc.initialOptionCostsController.set( 'ledger', page.get('initialCostsLedger'));
     EccapCalc.recurringOptionCostsController.set( 'ledger', page.get('recurringCostsLedger'));
     this.set('nowShowing', 'optionPage');
