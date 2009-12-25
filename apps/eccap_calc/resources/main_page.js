@@ -49,7 +49,7 @@ EccapCalc.mainPage = SC.Page.design({
     }),
   }),
   personalPage: SC.View.design({
-    childViews: 'labelView assetsView incomeView expensesView'.w(),
+    childViews: 'labelView assetsView incomeView expensesView resultsView'.w(),
 
     labelView: SC.LabelView.design({
       layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS, top: 0, height: 50},
@@ -62,10 +62,10 @@ EccapCalc.mainPage = SC.Page.design({
                   'EccapCalc.incomeLedgerController', 'Monthly Income'),
     expensesView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 600, 
                   'EccapCalc.expensesLedgerController', 'Monthly Expenses'),
-    resultsView: EccapCalc.ResultView,
+    resultsView: EccapCalc.ResultView(EccapCalc.LEFT_MARGIN_LEDGERS, 850),
   }),
   optionPage: SC.View.design({
-    childViews: 'labelView deleteButton ledger1 ledger2'.w(),
+    childViews: 'labelView deleteButton ledger1 ledger2 resultsView'.w(),
     labelView: SC.LabelView.design({
       layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS, top: 0, height: 50},
       valueBinding: 'EccapCalc.currentViewController.title',
@@ -81,6 +81,6 @@ EccapCalc.mainPage = SC.Page.design({
               'EccapCalc.initialOptionCostsController', 'Initial Costs'),
     ledger2: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 350, 
               'EccapCalc.recurringOptionCostsController', 'Monthly Costs'),
-    resultsView: EccapCalc.ResultView,
+    resultsView: EccapCalc.ResultView(EccapCalc.LEFT_MARGIN_LEDGERS, 600),
   }),
 });

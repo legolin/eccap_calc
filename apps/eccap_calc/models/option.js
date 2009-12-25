@@ -29,4 +29,7 @@ EccapCalc.Option = SC.Record.extend({
     inverse: 'page',
     isMaster: YES,
   }),
+  duration: function() {
+    return '99';
+  }.property(),
 });
