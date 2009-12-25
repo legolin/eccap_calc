@@ -15,25 +15,17 @@ EccapCalc.currentViewController = SC.ObjectController.create(
   account: null,
   nowShowing: null,
 
-  content: function() {
-    switch (this.nowShowing) {
-      case 'personalPage':
-        return this.account.get('personal_page');
-      case 'optionPage':
-        return EccapCalc.optionController.selection().firstObject();
-    };
-  }.property('account', 'nowShowing').cacheable(),
-
   showPersonal: function() {
     this.set('nowShowing', 'personalPage');
     EccapCalc.optionController.set('selection', null);
+    this.set('content', null);
   },
 
   showOption: function(p) {
     var page = EccapCalc.optionController.selection().firstObject();
+    this.set('content', page);
     EccapCalc.initialOptionCostsController.set( 'ledger', page.get('initialCostsLedger'));
     EccapCalc.recurringOptionCostsController.set( 'ledger', page.get('recurringCostsLedger'));
     this.set('nowShowing', 'optionPage');
-    this.notifyPropertyChange('content'); // Option selection may have changed.
   }
 });

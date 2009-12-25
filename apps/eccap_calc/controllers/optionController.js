@@ -47,7 +47,7 @@ EccapCalc.optionController = SC.ArrayController.create(
   },
 
   delete_option: function() {
-    var page = EccapCalc.currentViewController.content();
+    var page = EccapCalc.optionController.selection().firstObject();
 
     if (!SC.instanceOf(page, EccapCalc.Option)) {
       return NO;
