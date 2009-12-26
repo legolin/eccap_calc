@@ -62,11 +62,12 @@ EccapCalc.LedgerView = function(x, y, arrayController, title) {
         canDeleteContent: YES,
         classNames: ['numeric']
       }),
-		  verticalScrollOffsetBinding: arrayController + '.verticalOffset'
+		  verticalScrollOffsetBinding: arrayController + '.verticalOffset',
+      classNames: 'scroll-y'.w(),
     }),
 
     button_add: SC.ButtonView.design({
-      layout: { right: 32, top: 0, width: 100, height: h_add},
+      layout: { right: 32, top: 0, width: 75, height: h_add},
       title: 'New Item',
       target: arrayController,
       action: "add_item"

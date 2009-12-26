@@ -58,7 +58,8 @@ EccapCalc.ResultView = function(x, y) {
         contentValueKey: 'duration',
         classNames: ['numeric']
       }),
-		  verticalScrollOffsetBinding: 'EccapCalc.optionController.verticalOffset'
+		  verticalScrollOffsetBinding: 'EccapCalc.optionController.verticalOffset',
+      classNames: 'scroll-y'.w(),
     }),
   });
 }
