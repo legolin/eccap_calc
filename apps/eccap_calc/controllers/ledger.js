@@ -69,10 +69,10 @@ EccapCalc.ledgerController = function(path_to_view) {
 };
 
 // Controllers for personal page
-EccapCalc.assetsLedgerController = EccapCalc.ledgerController('personalPage.assetsView');
-EccapCalc.incomeLedgerController = EccapCalc.ledgerController('personalPage.incomeView');
-EccapCalc.expensesLedgerController = EccapCalc.ledgerController('personalPage.expensesView');
+EccapCalc.assetsLedgerController = EccapCalc.ledgerController('personalPage.scrollView.contentView.assetsView');
+EccapCalc.incomeLedgerController = EccapCalc.ledgerController('personalPage.scrollView.contentView.incomeView');
+EccapCalc.expensesLedgerController = EccapCalc.ledgerController('personalPage.scrollView.contentView.expensesView');
 
 // Controllers for option page
-EccapCalc.initialOptionCostsController = EccapCalc.ledgerController('optionPage.ledger1');
-EccapCalc.recurringOptionCostsController = EccapCalc.ledgerController('optionPage.ledger2');
+EccapCalc.initialOptionCostsController = EccapCalc.ledgerController('optionPage.scrollView.contentView.ledger1');
+EccapCalc.recurringOptionCostsController = EccapCalc.ledgerController('optionPage.scrollView.contentView.ledger2');

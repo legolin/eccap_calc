@@ -14,6 +14,7 @@ EccapCalc.mainPage = SC.Page.design({
   // Add childViews to this pane for views to display immediately on page 
   // load.
   mainPane: SC.MainPane.design({
+    layout: {height: 1100},
     childViews: [
       SC.ButtonView.design({
         layout: { left: 20, width: 140, top: 100, height: 24 },
@@ -27,16 +28,14 @@ EccapCalc.mainPage = SC.Page.design({
         target: 'EccapCalc.optionController',
         action: "add_option"
       }),
-      'option',
+      'options',
 
-      SC.ScrollView.design({
-        layout: { left: EccapCalc.LEFT_MARGIN_SCROLL, top: 0, bottom: 0, right: 0},
-        contentView: SC.ContainerView.design({
-          nowShowingBinding: 'EccapCalc.currentViewController.nowShowing',
-        }),
+      SC.ContainerView.design({
+        layout: { left: EccapCalc.LEFT_MARGIN_SCROLL},
+        nowShowingBinding: 'EccapCalc.currentViewController.nowShowing',
       }),
     ],
-    option: SC.ListView.design({
+    options: SC.ListView.design({
       layout: { left: 20, width: 140, top: 175, height: 0 },
       contentBinding: 'EccapCalc.optionController.arrangedObjects',
       selectionBinding: 'EccapCalc.optionController.selection',
@@ -49,23 +48,30 @@ EccapCalc.mainPage = SC.Page.design({
     }),
   }),
   personalPage: SC.View.design({
-    childViews: 'labelView assetsView incomeView expensesView resultsView'.w(),
+    childViews: 'labelView scrollView'.w(),
 
     labelView: SC.LabelView.design({
-      layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS, top: 0, height: 50},
+      layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS, height: 50},
       displayValue: 'Personal',
       controlSize: SC.HUGE_CONTROL_SIZE,
     }),
-    assetsView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 100,
-                  'EccapCalc.assetsLedgerController', 'Liquid Assets'),
-    incomeView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 350, 
-                  'EccapCalc.incomeLedgerController', 'Monthly Income'),
-    expensesView: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 600, 
-                  'EccapCalc.expensesLedgerController', 'Monthly Expenses'),
-    resultsView: EccapCalc.ResultView(EccapCalc.LEFT_MARGIN_LEDGERS, 850),
+    scrollView: SC.ScrollView.design({
+      layout: { top: 50, height: 1100},
+      contentView: SC.View.design({
+        layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS},
+        childViews: 'assetsView incomeView expensesView resultsView'.w(),
+        assetsView: EccapCalc.LedgerView(0, 50,
+                      'EccapCalc.assetsLedgerController', 'Liquid Assets'),
+        incomeView: EccapCalc.LedgerView(0, 300, 
+                      'EccapCalc.incomeLedgerController', 'Monthly Income'),
+        expensesView: EccapCalc.LedgerView(0, 550, 
+                      'EccapCalc.expensesLedgerController', 'Monthly Expenses'),
+        resultsView: EccapCalc.ResultView(0, 800),
+      }),
+    }),
   }),
   optionPage: SC.View.design({
-    childViews: 'labelView deleteButton ledger1 ledger2 resultsView'.w(),
+    childViews: 'labelView scrollView'.w(),
     labelView: SC.LabelView.design({
       layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS, top: 0, height: 50},
       valueBinding: 'EccapCalc.currentViewController.title',
@@ -77,10 +83,15 @@ EccapCalc.mainPage = SC.Page.design({
       target: 'EccapCalc.optionController',
       action: 'delete_option',
     }),
-    ledger1: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 100, 
-              'EccapCalc.initialOptionCostsController', 'Initial Costs'),
-    ledger2: EccapCalc.LedgerView(EccapCalc.LEFT_MARGIN_LEDGERS, 350, 
-              'EccapCalc.recurringOptionCostsController', 'Monthly Costs'),
-    resultsView: EccapCalc.ResultView(EccapCalc.LEFT_MARGIN_LEDGERS, 600),
+    scrollView: SC.ScrollView.design({
+      layout: { left: 0, top: 50, height: 1100},
+      contentView: SC.View.design({
+        layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS},
+        childViews: 'ledger1 ledger2 resultsView'.w(),
+        ledger1: EccapCalc.LedgerView(0, 50, 'EccapCalc.initialOptionCostsController', 'Initial Costs'),
+        ledger2: EccapCalc.LedgerView(0, 300, 'EccapCalc.recurringOptionCostsController', 'Monthly Costs'),
+        resultsView: EccapCalc.ResultView(0, 550),
+      }),
+    }),
   }),
 });

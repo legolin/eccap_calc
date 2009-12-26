@@ -22,7 +22,7 @@ EccapCalc.LedgerView = function(x, y, arrayController, title) {
   var y_title = 0;
   var y_list = y_title + h_title;
   var y_total = y_list + h_list + 3;
-  var x_total = w - w_amount - 32; // 16 is width of scroll bar
+  var x_total = w - w_amount - 16; // 16 is width of scroll bar
 
   return SC.View.extend(
     SC.CollectionViewDelegate,
@@ -33,7 +33,6 @@ EccapCalc.LedgerView = function(x, y, arrayController, title) {
 
     title: SC.LabelView.design({
       displayValue: title,
-      //fontWeight: SC.BOLD_WEIGHT,
       layout: { left: 0, top: 0, width: w, height: h_title},
       controlSize: SC.LARGE_CONTROL_SIZE,
     }),
@@ -54,6 +53,8 @@ EccapCalc.LedgerView = function(x, y, arrayController, title) {
 
     amount: SC.ScrollView.design({
       layout: { left: w - w_amount - 15, top: y_list, width: w_amount, height: h_list},
+		  verticalScrollOffsetBinding: arrayController + '.verticalOffset',
+      //classNames: 'scroll-y'.w(),
       contentView: SC.ListView.design({
         contentBinding: arrayController + '.arrangedObjects',
         selectionBinding: arrayController + '.selection',
@@ -62,8 +63,6 @@ EccapCalc.LedgerView = function(x, y, arrayController, title) {
         canDeleteContent: YES,
         classNames: ['numeric']
       }),
-		  verticalScrollOffsetBinding: arrayController + '.verticalOffset',
-      classNames: 'scroll-y'.w(),
     }),
 
     button_add: SC.ButtonView.design({

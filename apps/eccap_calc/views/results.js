@@ -53,13 +53,13 @@ EccapCalc.ResultView = function(x, y) {
 
     amount: SC.ScrollView.design({
       layout: { left: w - w_amount - 15, top: y_list, width: w_amount, height: h_list},
+		  verticalScrollOffsetBinding: 'EccapCalc.optionController.verticalOffset',
+      //classNames: 'scroll-y'.w(),
       contentView: SC.ListView.design({
         contentBinding: 'EccapCalc.optionController.arrangedObjects',
         contentValueKey: 'duration',
         classNames: ['numeric']
       }),
-		  verticalScrollOffsetBinding: 'EccapCalc.optionController.verticalOffset',
-      classNames: 'scroll-y'.w(),
     }),
   });
 }
