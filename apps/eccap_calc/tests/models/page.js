@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   EccapCalc.Page Unit Test
-// Copyright: ©2009 My Company, Inc.
+// Copyright: ©2009 Westside Consulting LLC, Inc.
 // ==========================================================================
 /*globals EccapCalc module test ok equals same stop start */
 

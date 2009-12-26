@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   EccapCalc.Account
-// Copyright: ©2009 My Company, Inc.
+// Copyright: ©2009 Westside Consulting LLC, Inc.
 // ==========================================================================
 /*globals EccapCalc */
 

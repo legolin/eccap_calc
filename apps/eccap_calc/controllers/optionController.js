@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   EccapCalc.optionController
-// Copyright: ©2009 My Company, Inc.
+// Copyright: ©2009 Westside Consulting LLC, Inc.
 // ==========================================================================
 /*globals EccapCalc */
 
