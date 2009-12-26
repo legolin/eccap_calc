@@ -47,8 +47,8 @@ EccapCalc.Option = SC.Record.extend({
     // The following formula is based on http://lsiden-seniorliving.blogspot.com/?zx=27751254234db036.
     var PV = current_assets - initial_costs;
     var A = personal_expenses - personal_income + recurring_costs;
-    var gt = (ror - inflation) / 12;  // r-tag: monthly rate-of-return over inflation
-    return this.max(0, this.round1(Math.log(PV / A * (Math.exp(gt) - 1) - 1) / (gt)));
+    var gt = (ror - inflation) / 1200;  // r-tag: monthly rate-of-return over inflation
+    return this.max(0, this.round1(-Math.log(PV / (-A) * (Math.exp(gt) - 1) + 1) / (gt)));
   }.property(
     'account.ror',
     'account.inflation',
