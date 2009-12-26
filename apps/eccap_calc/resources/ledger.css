@@ -14,3 +14,7 @@
 .scroll-y {
   overflow-y: scroll;
 }
+
+div#sc517 {
+  border-style: none;
+}

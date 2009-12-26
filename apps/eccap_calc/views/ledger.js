@@ -66,7 +66,7 @@ EccapCalc.LedgerView = function(x, y, arrayController, title) {
     }),
 
     button_add: SC.ButtonView.design({
-      layout: { right: 32, top: 0, width: 75, height: h_add},
+      layout: { right: 16, top: 0, width: 85, height: h_add},
       title: 'New Item',
       target: arrayController,
       action: "add_item"
