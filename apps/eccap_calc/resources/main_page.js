@@ -22,8 +22,24 @@ EccapCalc.mainPage = SC.Page.design({
         target: 'EccapCalc.currentViewController',
         action: 'showPersonal',
       }),
+      SC.LabelView.design({
+        layout: { left: 20, top: 140, width: 175, height: 18},
+        displayValue: 'Inflation Rate (%)',
+      }),
+      SC.TextFieldView.design({
+        layout: { left: 200, top: 140, width: 25, height: 18},
+        valueBinding: 'EccapCalc.currentViewController.account.inflation',
+      }),
+      SC.LabelView.design({
+        layout: { left: 20, top: 175, width: 175, height: 18},
+        displayValue: 'Return on Investments (%)',
+      }),
+      SC.TextFieldView.design({
+        layout: { left: 200, top: 175, width: 25, height: 18},
+        valueBinding: 'EccapCalc.currentViewController.account.ror',
+      }),
       SC.ButtonView.design({
-        layout: { left: 20, top: 150, width: 100, height: 25},
+        layout: { left: 20, top: 225, width: 100, height: 25},
         title: 'New Option',
         target: 'EccapCalc.optionController',
         action: "add_option"
@@ -36,7 +52,7 @@ EccapCalc.mainPage = SC.Page.design({
       }),
     ],
     options: SC.ListView.design({
-      layout: { left: 20, width: 140, top: 175, height: 0 },
+      layout: { left: 20, width: 140, top: 250, height: 0 },
       contentBinding: 'EccapCalc.optionController.arrangedObjects',
       selectionBinding: 'EccapCalc.optionController.selection',
       contentValueKey: 'title',
