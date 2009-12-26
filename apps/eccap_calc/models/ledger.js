@@ -24,8 +24,7 @@ EccapCalc.Ledger_ = SC.Record.extend(
 
   total: function() {
     return this.get('entries').reduce(this.total_callback, 0);
-  //}.property('*entries.[]').cacheable(),
-  }.property(),
+  }.property('*entries.[].amount').cacheable(),
 
   total_callback: function(prev, item, index, enumerable) {
     return Number(prev) + Number(item.get('amount'));

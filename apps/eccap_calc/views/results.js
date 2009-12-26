@@ -26,13 +26,18 @@ EccapCalc.ResultView = function(x, y) {
     SC.CollectionViewDelegate,
 
     /** @scope EccapCalc.LedgerView.prototype */ {
-    childViews: 'title description amount'.w(),
+    childViews: 'title year_legend description amount'.w(),
 		layout: { left: x, top: y, width: w, height: h},
 
     title: SC.LabelView.design({
       displayValue: 'Affordable Length of Stay',
       layout: { left: 0, top: 0, width: w, height: h_title},
       controlSize: SC.LARGE_CONTROL_SIZE,
+    }),
+
+    year_legend: SC.LabelView.design({
+      layout: { right: 0, top: 5, width: 50, height: h_title},
+      displayValue: 'Years',
     }),
 
     description: SC.ScrollView.design({
