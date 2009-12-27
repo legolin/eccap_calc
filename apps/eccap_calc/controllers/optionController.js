@@ -30,7 +30,7 @@ EccapCalc.optionController = SC.ArrayController.create(
     });
     var ledger2 = EccapCalc.store.createRecord(EccapCalc.Ledger, {
       page: SC.Record.toOne('EccapCalc.Option', {
-        inverse: 'RecurringCostsLedger',
+        inverse: 'recurringCostsLedger',
         isMaster: NO,
       }),
     });
