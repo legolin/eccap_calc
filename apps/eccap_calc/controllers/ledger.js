@@ -18,11 +18,15 @@ EccapCalc.ledgerController = function(path_to_view) {
 
     /** @scope EccapCalc.ledgerController.prototype */ {
     verticalOffset: 0,
-    ledger: null,
+    _ledger: null,
 
-    content: function() {
-      return this.ledger ? this.ledger.get('entries') : [];
-    }.property('ledger').cacheable(),
+    ledger: function(key, value) {
+      if (value) {
+        this._ledger = value;
+        this.set('content', value.get('entries'));
+      }
+      return this._ledger;
+    }.property(),
 
     total: function() {
       return this.reduce(this.reduce_total, 0);
@@ -36,7 +40,7 @@ EccapCalc.ledgerController = function(path_to_view) {
       // create new LedgerEntry and add it to the list
       var that = this;
       var ledger_entry = EccapCalc.store.createRecord(EccapCalc.LedgerEntry, {
-        ledger: that.ledger.get('id'), // value must be guid, not object itself!
+        ledger: that.getPath('ledger.id'), // value must be guid, not object itself!
       });
 
       // select new LedgerEntry in UI
@@ -60,7 +64,7 @@ EccapCalc.ledgerController = function(path_to_view) {
       records.invoke('destroy');
 
       if (EccapCalc.isUsingFixtures()) {
-        this.ledger.notifyPropertyChange('total');
+        this.get('ledger').notifyPropertyChange('total');
       }
 
       // set the new selection
