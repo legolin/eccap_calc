@@ -59,6 +59,10 @@ EccapCalc.ledgerController = function(path_to_view) {
       }, this);
       records.invoke('destroy');
 
+      if (EccapCalc.isUsingFixtures()) {
+        this.ledger.notifyPropertyChange('total');
+      }
+
       // set the new selection
       var selIndex = indexes.get('min')-1;
       if (selIndex<0) selIndex = 0 ;

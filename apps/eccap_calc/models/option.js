@@ -30,10 +30,6 @@ EccapCalc.Option = SC.Record.extend({
     isMaster: YES,
   }),
 
-  max: function(a, b) {
-    return a > b ? a : b;
-  },
-
   // Returns the length of affordable stay.
   duration: function() {
     var ror = this.getPath('account.ror');
@@ -47,16 +43,16 @@ EccapCalc.Option = SC.Record.extend({
     // The following formula is based on http://lsiden-seniorliving.blogspot.com/?zx=27751254234db036.
     var PV = current_assets - initial_costs;
     var A = personal_expenses - personal_income + recurring_costs;
-    var gt = (ror - inflation) / 1200;  // r-tag: monthly rate-of-return over inflation
-    return this.max(0, this.round1(-Math.log(PV / (-A) * (Math.exp(gt) - 1) + 1) / (gt)));
+    var gt = (ror - inflation) / 100 / 12;  // r-tag: monthly rate-of-return over inflation, normalized
+    return EccapCalc.max(0, this.round1(-Math.log(PV / (-A) * (Math.exp(gt) - 1) + 1) / gt / 12));
   }.property(
-    'account.ror',
-    'account.inflation',
-    'account.assetsLedger.total',
-    'account.incomeLedger.total',
-    'account.expensesLedger.total',
-    'initialCostsLedger.total',
-    'recurringCostsLedger.total'
+    '.account.ror',
+    '.account.inflation',
+    '.account.assetsLedger.total',
+    '.account.incomeLedger.total',
+    '.account.expensesLedger.total',
+    '.initialCostsLedger.total',
+    '.recurringCostsLedger.total'
   ).cacheable(),
 
   // Return x rounded to 1 decimal place.

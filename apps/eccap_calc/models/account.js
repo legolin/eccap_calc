@@ -26,10 +26,6 @@ EccapCalc.Account_ = SC.Record.extend(
     isRequired: NO,
     isEditable: YES,
   }),
-  personal_page: SC.Record.toOne('EccapCalc.Personal', {
-    inverse: 'account',
-    isMaster: YES,
-  }),
   options: SC.Record.toMany('EccapCalc.Option', {
     inverse: 'account',
     isMaster: YES,
@@ -58,6 +54,6 @@ EccapCalc.Account = EccapCalc.store.dataSource.instanceOf(SC.FixturesDataSource)
         account: this,
       });
       return this.get('store').find(q);
-     }.property().cacheable() 
+     }.property().cacheable(),
   })
   : EccapCalc.Account_.extend();
