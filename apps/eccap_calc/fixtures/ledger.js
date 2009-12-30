@@ -17,15 +17,15 @@ EccapCalc.Ledger.FIXTURES = [{
     account: 'account-1'
   }, {
     guid: 'option-1-initial',
-    page: 'option-1'
+    option: 'option-1'
   }, {
     guid: 'option-1-recurring',
-    page: 'option-1'
+    option: 'option-1'
   }, {
     guid: 'option-2-initial',
-    page: 'option-2'
+    option: 'option-2'
   }, {
     guid: 'option-2-recurring',
-    page: 'option-2'
+    option: 'option-2'
   }, 
 ];

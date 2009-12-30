@@ -26,4 +26,12 @@ EccapCalc.LedgerEntry = SC.Record.extend(
     inverse: 'entries',
     isMaster: NO,
   }),
+
+  recordDidChange: function(key) {
+    sc_super();
+
+    if (EccapCalc.isUsingFixtures() && key == 'amount') {
+      this.get('ledger').notifyPropertyChange('total');
+    }
+  },
 });

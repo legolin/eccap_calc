@@ -6,7 +6,7 @@
 
 /** @class
 
-  Controller for option pages.
+  Controller for care options.
   Content type is Eccap.Option.
 
   @extends SC.ArrayController
@@ -23,38 +23,38 @@ EccapCalc.optionController = SC.ArrayController.create(
   add_option: function() {
     var account = EccapCalc.currentViewController.get('account');
     var ledger1 = EccapCalc.store.createRecord(EccapCalc.Ledger, {
-      page: SC.Record.toOne('EccapCalc.Option', {
+      option: SC.Record.toOne('EccapCalc.Option', {
         inverse: 'initialCostsLedger',
         isMaster: NO,
       }),
     });
     var ledger2 = EccapCalc.store.createRecord(EccapCalc.Ledger, {
-      page: SC.Record.toOne('EccapCalc.Option', {
+      option: SC.Record.toOne('EccapCalc.Option', {
         inverse: 'recurringCostsLedger',
         isMaster: NO,
       }),
     });
-    var page = EccapCalc.store.createRecord(EccapCalc.Option, {
+    var option = EccapCalc.store.createRecord(EccapCalc.Option, {
       account: account.get('id'), // value is id for inverse relation 
       initialCostsLedger: ledger1,
       recurringCostsLedger: ledger2,
     });
-    this.selectObject(page); 
+    this.selectObject(option); 
     this.invokeLater(function() {
-      EccapCalc.currentViewController.showOption(page);
+      EccapCalc.currentViewController.showOption(option);
     });
     return YES ;
   },
 
   delete_option: function() {
-    var page = EccapCalc.optionController.selection().firstObject();
+    var option = EccapCalc.optionController.selection().firstObject();
 
-    if (!SC.instanceOf(page, EccapCalc.Option)) {
+    if (!SC.instanceOf(option, EccapCalc.Option)) {
       return NO;
     }
     // set the new selection
-    var index = EccapCalc.max(this.indexOf(page) - 1, 0);
-    EccapCalc.store.destroyRecord(null, null, page.storeKey);
+    var index = EccapCalc.max(this.indexOf(option) - 1, 0);
+    EccapCalc.store.destroyRecord(null, null, option.storeKey);
     this.updateSelectionAfterContentChange(); // keep this!!
 
     this.invokeLater(function() {

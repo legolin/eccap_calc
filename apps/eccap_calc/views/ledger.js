@@ -61,7 +61,7 @@ EccapCalc.LedgerView = function(x, y, arrayController, title) {
         contentValueKey: 'amount',
         canEditContent: YES,
         canDeleteContent: YES,
-        classNames: ['numeric']
+        classNames: ['numeric'],
       }),
     }),
 

@@ -21,6 +21,10 @@ EccapCalc = SC.Application.create(
   // connect to a backend server.  The default setup below connects the store
   // to any fixtures you define.
   store: SC.Store.create().from(SC.Record.fixtures),
+
+  isUsingFixtures: function() {
+    return this.store.dataSource.instanceOf(SC.FixturesDataSource);
+  },
   
   // TODO: Add global constants or singleton objects needed by your app here.
 

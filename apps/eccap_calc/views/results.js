@@ -58,7 +58,7 @@ EccapCalc.ResultView = function(x, y) {
       contentView: SC.ListView.design({
         contentBinding: 'EccapCalc.optionController.arrangedObjects',
         contentValueKey: 'duration',
-        classNames: ['numeric']
+        classNames: ['numeric'],
       }),
     }),
   });

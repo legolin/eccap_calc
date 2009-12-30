@@ -18,11 +18,15 @@ EccapCalc.ledgerController = function(path_to_view) {
 
     /** @scope EccapCalc.ledgerController.prototype */ {
     verticalOffset: 0,
-    ledger: null,
+    _ledger: null,
 
-    content: function() {
-      return this.ledger ? this.ledger.get('entries') : [];
-    }.property('ledger').cacheable(),
+    ledger: function(key, value) {
+      if (value) {
+        this._ledger = value;
+        this.set('content', value.get('entries'));
+      }
+      return this._ledger;
+    }.property(),
 
     total: function() {
       return this.reduce(this.reduce_total, 0);
@@ -36,7 +40,7 @@ EccapCalc.ledgerController = function(path_to_view) {
       // create new LedgerEntry and add it to the list
       var that = this;
       var ledger_entry = EccapCalc.store.createRecord(EccapCalc.LedgerEntry, {
-        ledger: that.ledger.get('id'), // value must be guid, not object itself!
+        ledger: that.getPath('ledger.id'), // value must be guid, not object itself!
       });
 
       // select new LedgerEntry in UI
@@ -59,6 +63,10 @@ EccapCalc.ledgerController = function(path_to_view) {
       }, this);
       records.invoke('destroy');
 
+      if (EccapCalc.isUsingFixtures()) {
+        this.get('ledger').notifyPropertyChange('total');
+      }
+
       // set the new selection
       var selIndex = indexes.get('min')-1;
       if (selIndex<0) selIndex = 0 ;
@@ -68,11 +76,11 @@ EccapCalc.ledgerController = function(path_to_view) {
   });
 };
 
-// Controllers for personal page
+// Controllers for personal ledgers.
 EccapCalc.assetsLedgerController = EccapCalc.ledgerController('personalPage.scrollView.contentView.assetsView');
 EccapCalc.incomeLedgerController = EccapCalc.ledgerController('personalPage.scrollView.contentView.incomeView');
 EccapCalc.expensesLedgerController = EccapCalc.ledgerController('personalPage.scrollView.contentView.expensesView');
 
-// Controllers for option page
+// Controllers for care option ledgers.
 EccapCalc.initialOptionCostsController = EccapCalc.ledgerController('optionPage.scrollView.contentView.ledger1');
 EccapCalc.recurringOptionCostsController = EccapCalc.ledgerController('optionPage.scrollView.contentView.ledger2');
