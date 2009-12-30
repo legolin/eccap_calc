@@ -87,14 +87,14 @@ EccapCalc.mainPage = SC.Page.design({
     }),
   }),
   optionPage: SC.View.design({
-    childViews: 'labelView scrollView'.w(),
+    childViews: 'labelView deleteButton scrollView'.w(),
     labelView: SC.LabelView.design({
-      layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS, top: 0, height: 50},
+      layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS, top: 20, width:400, height: 50},
       valueBinding: 'EccapCalc.currentViewController.title',
       controlSize: SC.HUGE_CONTROL_SIZE,
     }),
     deleteButton: SC.ButtonView.design({
-      layout: { right: 0, width: 100, top: 0, height: 24 },
+      layout: { right: 50, width: 100, top: 20, height: 24 },
       title: 'Delete Page',
       target: 'EccapCalc.optionController',
       action: 'delete_option',
