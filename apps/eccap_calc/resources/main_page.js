@@ -67,7 +67,7 @@ EccapCalc.mainPage = SC.Page.design({
     childViews: 'labelView scrollView'.w(),
 
     labelView: SC.LabelView.design({
-      layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS, height: 50},
+      layout: { top: 20, left: EccapCalc.LEFT_MARGIN_LEDGERS, height: 50},
       displayValue: 'Personal',
       controlSize: SC.HUGE_CONTROL_SIZE,
     }),
