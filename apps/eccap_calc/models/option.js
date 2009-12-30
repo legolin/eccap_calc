@@ -6,7 +6,7 @@
 
 /** @class
 
-  A page contains one or more ledgers to be displayed together.
+  Represents a care-option.
 
   @extends SC.Record
   @version 0.1
@@ -22,11 +22,11 @@ EccapCalc.Option = SC.Record.extend({
     isMaster: NO,
   }),
   initialCostsLedger: SC.Record.toOne('EccapCalc.Ledger', {
-    inverse: 'page',
+    inverse: 'option',
     isMaster: YES,
   }),
   recurringCostsLedger: SC.Record.toOne('EccapCalc.Ledger', {
-    inverse: 'page',
+    inverse: 'option',
     isMaster: YES,
   }),
 
@@ -45,15 +45,19 @@ EccapCalc.Option = SC.Record.extend({
     var A = personal_expenses - personal_income + recurring_costs;
     var gt = (ror - inflation) / 100 / 12;  // r-tag: monthly rate-of-return over inflation, normalized
     return EccapCalc.max(0, this.round1(-Math.log(PV / (-A) * (Math.exp(gt) - 1) + 1) / gt / 12));
-  }.property(
-    '.account.ror',
-    '.account.inflation',
-    '.account.assetsLedger.total',
-    '.account.incomeLedger.total',
-    '.account.expensesLedger.total',
-    '.initialCostsLedger.total',
-    '.recurringCostsLedger.total'
-  ).cacheable(),
+  }.property(),
+
+  somethingChanged: function() {
+    this.notifyPropertyChange('duration');
+  }.observes(
+    '*account.ror',
+    '*account.inflation',
+    '*account.assetsLedger.total',
+    '*account.incomeLedger.total',
+    '*account.expensesLedger.total',
+    '*initialCostsLedger.total',
+    '*recurringCostsLedger.total'
+  ),
 
   // Return x rounded to 1 decimal place.
   round1: function(x) {

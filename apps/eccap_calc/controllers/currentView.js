@@ -6,7 +6,7 @@
 
 /** @class
 
-  Switch pages.
+  Controls display of ledgers.
 
   @extends SC.Object
 */
@@ -15,17 +15,19 @@ EccapCalc.currentViewController = SC.ObjectController.create(
   account: null,
   nowShowing: null,
 
+  // Show personal ledgers.
   showPersonal: function() {
     this.set('nowShowing', 'personalPage');
     EccapCalc.optionController.set('selection', null);
     this.set('content', null);
   },
 
+  // Show care option ledgers.
   showOption: function(p) {
-    var page = EccapCalc.optionController.selection().firstObject();
-    this.set('content', page);
-    EccapCalc.initialOptionCostsController.set( 'ledger', page.get('initialCostsLedger'));
-    EccapCalc.recurringOptionCostsController.set( 'ledger', page.get('recurringCostsLedger'));
+    var option = EccapCalc.optionController.selection().firstObject();
+    this.set('content', option);
+    EccapCalc.initialOptionCostsController.set( 'ledger', option.get('initialCostsLedger'));
+    EccapCalc.recurringOptionCostsController.set( 'ledger', option.get('recurringCostsLedger'));
     this.set('nowShowing', 'optionPage');
   }
 });
