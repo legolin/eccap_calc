@@ -36,7 +36,7 @@ EccapCalc.ResultView = function(x, y) {
     }),
 
     year_legend: SC.LabelView.design({
-      layout: { right: 0, top: 5, width: 50, height: h_title},
+      layout: { right: 16, top: 5, width: 50, height: h_title},
       displayValue: 'Years',
     }),
 
@@ -52,6 +52,7 @@ EccapCalc.ResultView = function(x, y) {
     }),
 
     amount: SC.ScrollView.design({
+			classNames: 'amount'.w(),
       layout: { left: w - w_amount - 15, top: y_list, width: w_amount, height: h_list},
 		  verticalScrollOffsetBinding: 'EccapCalc.optionController.verticalOffset',
       //classNames: 'scroll-y'.w(),

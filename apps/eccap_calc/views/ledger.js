@@ -52,6 +52,7 @@ EccapCalc.LedgerView = function(x, y, arrayController, title) {
     }),
 
     amount: SC.ScrollView.design({
+			classNames: 'amount'.w(),
       layout: { left: w - w_amount - 15, top: y_list, width: w_amount, height: h_list},
 		  verticalScrollOffsetBinding: arrayController + '.verticalOffset',
       //classNames: 'scroll-y'.w(),
@@ -66,7 +67,7 @@ EccapCalc.LedgerView = function(x, y, arrayController, title) {
     }),
 
     button_add: SC.ButtonView.design({
-      layout: { right: 16, top: 0, width: 85, height: h_add},
+      layout: { left: w - w_amount - 15, top: 0, width: 80, height: h_add},
       title: 'New Item',
       target: arrayController,
       action: "add_item"
@@ -79,7 +80,7 @@ EccapCalc.LedgerView = function(x, y, arrayController, title) {
     }),
 
     total: SC.LabelView.design({
-      layout: { left: x_total, top: y_total, width: w_amount, height: h_title},
+      layout: { left: x_total, top: y_total, width: w_amount - 16, height: h_title},
       //valueBinding: arrayController + '.ledger.total',
       valueBinding: arrayController + '.total',
       textAlign: SC.ALIGN_RIGHT,
