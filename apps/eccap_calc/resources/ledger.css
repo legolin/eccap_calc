@@ -2,7 +2,7 @@
   text-align: right;
 }
 
-.description .sc-vertical{
+.description {
 	overflow-y:hidden !important;
 }
 
@@ -11,7 +11,7 @@
   line-height:28px;
 }
 
-.scroll-y {
+.scroll-y, .sc-scroll-view {
   overflow-y: scroll;
 }
 

@@ -14,7 +14,6 @@ EccapCalc.mainPage = SC.Page.design({
   // Add childViews to this pane for views to display immediately on page 
   // load.
   mainPane: SC.MainPane.design({
-    layout: {height: 1100},
     childViews: [
       SC.ButtonView.design({
         layout: { left: 20, width: 140, top: 100, height: 24 },
@@ -72,7 +71,7 @@ EccapCalc.mainPage = SC.Page.design({
       controlSize: SC.HUGE_CONTROL_SIZE,
     }),
     scrollView: SC.ScrollView.design({
-      layout: { top: 50, height: 1100},
+      layout: { top: 50, },
       contentView: SC.View.design({
         layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS},
         childViews: 'assetsView incomeView expensesView resultsView'.w(),
@@ -100,7 +99,7 @@ EccapCalc.mainPage = SC.Page.design({
       action: 'delete_option',
     }),
     scrollView: SC.ScrollView.design({
-      layout: { left: 0, top: 50, height: 1100},
+      layout: { top: 50, },
       contentView: SC.View.design({
         layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS},
         childViews: 'ledger1 ledger2 resultsView'.w(),
