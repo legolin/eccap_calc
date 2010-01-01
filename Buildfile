@@ -7,3 +7,4 @@
 config :all,
 :required => :sproutcore,
 :load_fixtures => true,
+#:url_prefix => 'static',
