@@ -1,7 +1,21 @@
 =============================================================================
 Project:   EccapCalc
-Copyright: ©2009 My Company, Inc.
+Copyright: ©2009 Westside Consulting LLC, Ann Arbor, MI, USA
 =============================================================================
 
-TODO: Describe Your Project
+Elderly Care Cost and Planning (ECCAP) Calculator is a tool for determining
+the affordable length of stay in different living options or care-facilities
+and an elderly person or their care-givers may be considering.
 
+It was done as a proposal to a joint project between FINRA (http://finra.org)
+and the University of Michigan Senior Housing Bureau.
+
+The initial release of this calculator is for demo purposes only.  It is offered
+as-is.  It's results have not been independently verified by a CPA.  Westside
+Consulting LLC takes no responsibility for the results or for any decisions 
+based on its results.
+
+The calcuator is initially seeded with some demo numbers for getting started.
+
+When FINRA provides funding for this work, Westside will provide a database 
+with secure user accounts for saving and restoring calculations and results.
