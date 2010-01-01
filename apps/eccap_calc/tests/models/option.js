@@ -1,12 +1,12 @@
 // ==========================================================================
-// Project:   EccapCalc.calcDataController Unit Test
-// Copyright: ©2009 Westside Consulting LLC, Inc.
+// Project:   EccapCalc.Option Unit Test
+// Copyright: ©2010 My Company, Inc.
 // ==========================================================================
 /*globals EccapCalc module test ok equals same stop start */
 
-module("EccapCalc.calcDataController");
+module("EccapCalc.Option");
 
-// TODO: Replace with real unit test for EccapCalc.calcDataController
+// TODO: Replace with real unit test for Option
 test("test description", function() {
   var expected = "test";
   var result   = "test";
