@@ -2,6 +2,19 @@
   text-align: right;
 }
 
-.description .sc-vertical{
+.description {
 	overflow-y:hidden !important;
+}
+
+.amount {
+	overflow-y:scroll !important;
+}
+
+.sc-label-view.sc-huge-size {
+  font-size:24px;
+  line-height:28px;
+}
+
+body.sc-theme.sc-view.sc-gray-border {
+  border-style: none !important;
 }

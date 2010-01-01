@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   EccapCalc
-// Copyright: ©2009 My Company, Inc.
+// Copyright: ©2009 Westside Consulting LLC, Inc.
 // ==========================================================================
 /*globals EccapCalc */
 
@@ -13,6 +13,8 @@
 //
 EccapCalc.main = function main() {
 
+  EccapCalc.store.set('commitRecordsAutomatically', YES);
+
   // Step 1: Instantiate Your Views
   // The default code here will make the mainPane for your application visible
   // on screen.  If you app gets any level of complexity, you will probably 
@@ -21,8 +23,7 @@ EccapCalc.main = function main() {
 
   // Step 2. Set the content property on your primary controller.
   // This will make your app come alive!
-  var data = EccapCalc.store.find(EccapCalc.Asset);
-  EccapCalc.assetsController.set('content', data);
+  EccapCalc.load_account('account-1');
 };
 
 function main() { EccapCalc.main(); }

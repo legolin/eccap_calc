@@ -1,12 +1,12 @@
 // ==========================================================================
-// Project:   EccapCalc.Assets Unit Test
-// Copyright: ©2009 My Company, Inc.
+// Project:   EccapCalc.LedgerEntry Unit Test
+// Copyright: ©2009 Westside Consulting LLC, Inc.
 // ==========================================================================
 /*globals EccapCalc module test ok equals same stop start */
 
-module("EccapCalc.Assets");
+module("EccapCalc.LedgerEntry");
 
-// TODO: Replace with real unit test for Assets
+// TODO: Replace with real unit test for LedgerEntry
 test("test description", function() {
   var expected = "test";
   var result   = "test";

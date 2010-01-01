@@ -1,8 +1,11 @@
 // ==========================================================================
 // Project:   EccapCalc - mainPage
-// Copyright: ©2009 My Company, Inc.
+// Copyright: ©2009 Westside Consulting LLC, Ann Arbor, MI, USA
 // ==========================================================================
 /*globals EccapCalc */
+
+EccapCalc.LEFT_MARGIN_SCROLL = 200;
+EccapCalc.LEFT_MARGIN_LEDGERS = 50;
 
 // This page describes the main user interface for your application.  
 EccapCalc.mainPage = SC.Page.design({
@@ -11,10 +14,107 @@ EccapCalc.mainPage = SC.Page.design({
   // Add childViews to this pane for views to display immediately on page 
   // load.
   mainPane: SC.MainPane.design({
-    childViews: 'assetsView assetsView2 assetsView3'.w(),
-    assetsView: EccapCalc.LedgerView(100, 100, 400, 200, 'Liquid Assets', 'EccapCalc.assetsController'),
-    assetsView2: EccapCalc.LedgerView(100, 350, 400, 200, 'Liquid Assets2', 'EccapCalc.assetsController'),
-    assetsView3: EccapCalc.LedgerView(100, 600, 400, 200, 'Liquid Assets3', 'EccapCalc.assetsController'),
-  }),
+    childViews: [
+      SC.ButtonView.design({
+        layout: { left: 20, width: 140, top: 100, height: 24 },
+        title: 'Personal',
+        target: 'EccapCalc.currentViewController',
+        action: 'showPersonal',
+      }),
+      SC.LabelView.design({
+        layout: { left: 20, top: 140, width: 175, height: 18},
+        displayValue: 'Inflation Rate',
+      }),
+      SC.TextFieldView.design({
+        layout: { left: 20, top: 158, width: 25, height: 18},
+        valueBinding: 'EccapCalc.currentViewController.account.inflation',
+      }),
+      SC.LabelView.design({
+        layout: { left: 50, top: 158, width: 10, height: 18},
+        displayValue: '%',
+      }),
+      SC.LabelView.design({
+        layout: { left: 20, top: 185, width: 175, height: 18},
+        displayValue: 'Return on Investments',
+      }),
+      SC.TextFieldView.design({
+        layout: { left: 20, top: 203, width: 25, height: 18},
+        valueBinding: 'EccapCalc.currentViewController.account.ror',
+      }),
+      SC.LabelView.design({
+        layout: { left: 50, top: 203, width: 10, height: 18},
+        displayValue: '%',
+      }),
+      SC.ButtonView.design({
+        layout: { left: 20, top: 235, width: 100, height: 25},
+        title: 'New Option',
+        target: 'EccapCalc.optionController',
+        action: "add_option"
+      }),
+      'options',
 
+      SC.ContainerView.design({
+        layout: { left: EccapCalc.LEFT_MARGIN_SCROLL},
+        nowShowingBinding: 'EccapCalc.currentViewController.nowShowing',
+      }),
+    ],
+    options: SC.ListView.design({
+      layout: { left: 20, width: 140, top: 260, height: 0 },
+      contentBinding: 'EccapCalc.optionController.arrangedObjects',
+      selectionBinding: 'EccapCalc.optionController.selection',
+      contentValueKey: 'title',
+      target: 'EccapCalc.currentViewController', 
+      action: 'showOption',
+      actOnSelect: YES,
+      canEditContent: YES,
+      canDeleteContent: YES,
+    }),
+  }),
+  personalPage: SC.View.design({
+    childViews: 'labelView scrollView'.w(),
+
+    labelView: SC.LabelView.design({
+      layout: { top: 20, left: EccapCalc.LEFT_MARGIN_LEDGERS, height: 50},
+      displayValue: 'Personal',
+      controlSize: SC.HUGE_CONTROL_SIZE,
+    }),
+    scrollView: SC.ScrollView.design({
+      layout: { top: 50, },
+      contentView: SC.View.design({
+        layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS, height: 825},
+        childViews: 'assetsView incomeView expensesView resultsView'.w(),
+        assetsView: EccapCalc.LedgerView(0, 25,
+                      'EccapCalc.assetsLedgerController', 'Liquid Assets'),
+        incomeView: EccapCalc.LedgerView(0, 225, 
+                      'EccapCalc.incomeLedgerController', 'Monthly Income'),
+        expensesView: EccapCalc.LedgerView(0, 425, 
+                      'EccapCalc.expensesLedgerController', 'Monthly Expenses'),
+        resultsView: EccapCalc.ResultView(0, 625),
+      }),
+    }),
+  }),
+  optionPage: SC.View.design({
+    childViews: 'labelView deleteButton scrollView'.w(),
+    labelView: SC.LabelView.design({
+      layout: { left: EccapCalc.LEFT_MARGIN_LEDGERS, top: 20, width:400, height: 50},
+      valueBinding: 'EccapCalc.currentViewController.title',
+      controlSize: SC.HUGE_CONTROL_SIZE,
+    }),
+    deleteButton: SC.ButtonView.design({
+      layout: { right: 50, width: 100, top: 20, height: 24 },
+      title: 'Delete Page',
+      target: 'EccapCalc.optionController',
+      action: 'delete_option',
+    }),
+    scrollView: SC.ScrollView.design({
+      layout: { top: 50, },
+      contentView: SC.View.design({
+        layout: {left: EccapCalc.LEFT_MARGIN_LEDGERS, height: 625},
+        childViews: 'ledger1 ledger2 resultsView'.w(),
+        ledger1: EccapCalc.LedgerView(0, 25, 'EccapCalc.initialOptionCostsController', 'Initial Costs'),
+        ledger2: EccapCalc.LedgerView(0, 225, 'EccapCalc.recurringOptionCostsController', 'Monthly Costs'),
+        resultsView: EccapCalc.ResultView(0, 425),
+      }),
+    }),
+  }),
 });
