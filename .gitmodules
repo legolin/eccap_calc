@@ -1,0 +1,3 @@
+[submodule "mockup"]
+	path = mockup
+	url = git@github.com:lsiden/eccap_calc_mockup.git

@@ -1,0 +1,7 @@
+.numeric {
+  text-align: right;
+}
+
+.description .sc-vertical{
+	overflow-y:hidden !important;
+}
