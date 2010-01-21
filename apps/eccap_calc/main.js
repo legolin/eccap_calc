@@ -26,4 +26,9 @@ EccapCalc.main = function main() {
   EccapCalc.load_account('account-1');
 };
 
-function main() { EccapCalc.main(); }
+function main() { 
+  EccapCalc.main(); 
+  
+  document.title = "Affordable Living Calculator"
+  
+}
